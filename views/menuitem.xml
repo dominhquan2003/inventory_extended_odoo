@@ -1,0 +1,19 @@
+<odoo>
+  <menuitem id="menu_sale_table" name="New Sale" />
+  
+  <record id="action_sale_product_table" model="ir.actions.act_window">
+    <field name="name">Product</field>
+    <field name="res_model">newsale.product</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_sale_product_table" name="Product" action="action_sale_product_table" parent="menu_sale_table" />
+  
+  <record id="action_sale_customer_table" model="ir.actions.act_window">
+    <field name="name">Customer </field>
+    <field name="res_model">newsale.customer</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_sale_customer_table" name="Customer" action="action_sale_customer_table" parent="menu_sale_table" />
+</odoo>
