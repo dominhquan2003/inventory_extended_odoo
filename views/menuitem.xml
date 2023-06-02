@@ -25,9 +25,11 @@
             <record id="sale.menu_product_pricelist_main" model="ir.ui.menu">
                   <field name="active">False</field>
             </record>
-            <record id="sale.product_menu_catalog" model="ir.ui.menu">
-                  <field name="active">False</field>
+
+             <record id="sale.product_menu_catalog" model="ir.ui.menu">
+                  <field name="active">True</field>
             </record>
+            
 
 
 
