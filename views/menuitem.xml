@@ -1,19 +1,40 @@
 <odoo>
-  <menuitem id="menu_sale_table" name="New Sale" />
-  
-  <record id="action_sale_product_table" model="ir.actions.act_window">
-    <field name="name">Product</field>
-    <field name="res_model">newsale.product</field>
-    <field name="view_mode">tree,form</field>
-  </record>
+      <data>
+            <!-- Ghi đè view của menu gốc -->
+            <record id="sale.menu_sale_invoicing" model="ir.ui.menu">
+                  <field name="active">False</field>
+            </record>
 
-  <menuitem id="menu_sale_product_table" name="Product" action="action_sale_product_table" parent="menu_sale_table" />
-  
-  <record id="action_sale_customer_table" model="ir.actions.act_window">
-    <field name="name">Customer </field>
-    <field name="res_model">res.partner</field>
-    <field name="view_mode">tree,form</field>
-  </record>
+            <record id="sale.menu_sale_report" model="ir.ui.menu">
+                  <field name="active">False</field>
+            </record>
+            <record id="sale.menu_sale_config" model="ir.ui.menu">
+                  <field name="active">False</field>
+            </record>
 
-  <menuitem id="menu_sale_customer_table" name="Customer" action="action_sale_customer_table" parent="menu_sale_table" />
+            <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+                  <field name="active">False</field>
+            </record>
+
+            <record id="sale.report_sales_team" model="ir.ui.menu">
+                  <field name="active">False</field>
+            </record>
+            <record id="sale.menu_products" model="ir.ui.menu">
+                  <field name="active">False</field>
+            </record>
+            <record id="sale.menu_product_pricelist_main" model="ir.ui.menu">
+                  <field name="active">False</field>
+            </record>
+
+             <record id="sale.product_menu_catalog" model="ir.ui.menu">
+                  <field name="active">True</field>
+            </record>
+            
+
+
+
+
+
+
+      </data>
 </odoo>
