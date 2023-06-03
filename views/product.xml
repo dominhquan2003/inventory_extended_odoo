@@ -6,82 +6,6 @@
     <field name="inherit_id"
       ref="product.product_template_only_form_view" />
     <field name="arch" type="xml">
-      <!-- <xpath
-        expr='//form/sheet/notebook/page[@name="general_information"]/group/group[@name="group_general"]'
-        position="attributes">
-        <attribute name="invisible">1</attribute>
-      </xpath>
-      <xpath
-        expr="//form/sheet/notebook/page[@name='general_information']/group[last()]"
-        position="attributes">
-        <attribute name="invisible">1</attribute>
-      </xpath>
-      <xpath
-        expr='//form/sheet/notebook/page[@name="purchase"]'
-        position="attributes">
-        <attribute name="invisible">1</attribute>
-      </xpath>
-      <xpath
-        expr='//form/sheet/notebook/page[@name="inventory"]'
-        position="attributes">
-        <attribute name="invisible">1</attribute>
-      </xpath>
-      <xpath
-        expr='//form/sheet/notebook/page[@name="variants"]'
-        position="attributes">
-        <attribute name="invisible">1</attribute>
-      </xpath>
-      <xpath
-        expr='//form/div'
-        position="attributes">
-        <attribute name="invisible">1</attribute>
-      </xpath> -->
-      <!-- <xpath
-                expr="//form/sheet/notebook/page[@name='general_information']/group[last()]"
-                position="after">
-                <div class="d-flex align-items-center justify-content-center" style="height: 10vh;">
-                    <div class="text-center">
-                        <field name="image_1920" widget="image" class="oe_avatar"
-                            options="{'preview_image': 'image_128'}" />
-                        <field name="image_1920" widget="image" class="oe_avatar"
-                            options="{'preview_image': 'image_128'}" />
-                        <field name="image_1920" widget="image" class="oe_avatar"
-                            options="{'preview_image': 'image_128'}" />
-                    </div>
-                </div>
-            </xpath>
-            <field name="image_1920" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field> -->
-      <!-- <field name="categ_id" position="attributes">
-        <attribute name="invisible">1</attribute>
-      </field>
-      <field name="list_price" position="attributes">
-        <attribute name="invisible">1</attribute>
-      </field>
-      <field name="taxes_id" position="attributes">
-        <attribute name="invisible">1</attribute>
-      </field>
-      <field name="default_code" position="attributes">
-        <attribute name="invisible">1</attribute>
-      </field>
-      <field name="product_tag_ids" position="attributes">
-        <attribute name="invisible">1</attribute>
-      </field>
-      <field name="company_id" position="attributes">
-        <attribute name="invisible">1</attribute>
-      </field> -->
-      <!-- <field name="image_1920" position="after">
-        <style>
-          .custom_image {
-          max-width: 1000px;
-          max-height: 1000px;
-          }
-        </style>
-      </field> -->
-      <!-- <field name="image_1920" position="attributes">
-        <attribute name="class"></attribute>
-      </field> -->
       <xpath
         expr='//form/sheet/div[@name="button_box"]'
         position="attributes">
@@ -103,17 +27,17 @@
         <attribute name="invisible">1</attribute>
       </xpath>
       <xpath expr='//form/sheet/div[@class="oe_title"]' position="after">
-        <!-- <label for="list_price" />
-        <label for="default_code" />
-        <label for="customer_id" />
-        <div name="pricing"> -->
         <group>
-          <field name="list_price" class="oe_inline" widget='monetary'
-            options="{'currency_field': 'currency_id', 'field_digits': True}" />
-          <field name="default_code" string="Code" class="oe_inline" />
-          <field name="customer_id" widget="many2many_tags"
-            class="oe_inline" />
-        </group>
+          <group name="group_left">
+          </group>
+          <group name="group_right">
+            <field name="list_price" class="oe_inline" widget='monetary'
+              options="{'currency_field': 'currency_id', 'field_digits': True}" />
+            <field name="default_code" string="Code" class="oe_inline" />
+            <field name="customer_id" widget="many2many_tags"
+              class="oe_inline" />
+          </group>
+        </group>d
       </xpath>
     </field>
   </record>
