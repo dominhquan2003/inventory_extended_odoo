@@ -28,16 +28,32 @@
       </xpath>
       <xpath expr='//form/sheet/div[@class="oe_title"]' position="after">
         <group>
-          <group name="group_left">
-          </group>
-          <group name="group_right">
-            <field name="list_price" class="oe_inline" widget='monetary'
-              options="{'currency_field': 'currency_id', 'field_digits': True}" />
-            <field name="default_code" string="Code" class="oe_inline" />
-            <field name="customer_id" widget="many2many_tags"
-              class="oe_inline" />
-          </group>
-        </group>d
+          <field name="list_price" class="oe_inline" widget='monetary'
+            options="{'currency_field': 'currency_id', 'field_digits': True}" />
+          <field name="default_code" string="Code" class="oe_inline" />
+          <field name="customer_id" widget="many2many_tags"
+            class="oe_inline" />
+        </group>
+      </xpath>
+      <xpath expr='//form/sheet/field[@name="image_1920"]'
+        position="before">
+        <style>
+          .oe_avatar1 {
+          float: right;
+          margin-bottom: 10px;
+
+          &gt; img {
+          max-width: 200%;
+          max-height: 200%;
+          vertical-align: top;
+          border: 1px solid $o-gray-300;
+          }
+          }
+        </style>
+      </xpath>
+      <xpath expr='//form/sheet/field[@name="image_1920"]'
+        position="attributes">
+        <attribute name="class">oe_avatar1</attribute>
       </xpath>
     </field>
   </record>

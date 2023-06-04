@@ -1,40 +1,35 @@
 <odoo>
-      <data>
-            <!-- Ghi đè view của menu gốc -->
-            <record id="sale.menu_sale_invoicing" model="ir.ui.menu">
-                  <field name="active">False</field>
-            </record>
+	<data>
+		<!-- Ghi đè view của menu gốc -->
+		<record id="sale.menu_sale_invoicing" model="ir.ui.menu">
+			<field name="active">False</field>
+		</record>
 
-            <record id="sale.menu_sale_report" model="ir.ui.menu">
-                  <field name="active">False</field>
-            </record>
-            <record id="sale.menu_sale_config" model="ir.ui.menu">
-                  <field name="active">False</field>
-            </record>
+		<record id="sale.menu_sale_report" model="ir.ui.menu">
+			<field name="active">False</field>
+		</record>
+		<record id="sale.menu_sale_config" model="ir.ui.menu">
+			<field name="active">True</field>
+		</record>
 
-            <record id="sale.menu_sale_quotations" model="ir.ui.menu">
-                  <field name="active">False</field>
-            </record>
+		<record id="sale.menu_sale_quotations" model="ir.ui.menu">
+			<field name="active">False</field>
+		</record>
 
-            <record id="sale.report_sales_team" model="ir.ui.menu">
-                  <field name="active">False</field>
-            </record>
-            <record id="sale.menu_products" model="ir.ui.menu">
-                  <field name="active">False</field>
-            </record>
-            <record id="sale.menu_product_pricelist_main" model="ir.ui.menu">
-                  <field name="active">False</field>
-            </record>
+		<record id="sale.report_sales_team" model="ir.ui.menu">
+			<field name="active">False</field>
+		</record>
+		<record id="sale.menu_products" model="ir.ui.menu">
+			<field name="active">False</field>
+		</record>
+		<record id="sale.menu_product_pricelist_main" model="ir.ui.menu">
+			<field name="active">False</field>
+		</record>
 
-             <record id="sale.product_menu_catalog" model="ir.ui.menu">
-                  <field name="active">True</field>
-            </record>
-            
-
+		<record id="sale.product_menu_catalog" model="ir.ui.menu">
+			<field name="active">True</field>
+		</record>
 
 
-
-
-
-      </data>
+	</data>
 </odoo>
