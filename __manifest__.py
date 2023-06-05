@@ -29,6 +29,7 @@
         'views/menuitem.xml',
         'views/customer.xml',
         'views/product.xml',
+        'views/quotation.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
