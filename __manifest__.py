@@ -21,7 +21,7 @@
     'application': True,
 
     # any module necessary for this one to work correctly
-    'depends': ['sale'],
+    'depends': ['sale_management'],
 
     # always loaded
     'data': [
