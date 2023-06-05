@@ -1,70 +1,94 @@
 <odoo>
-    <data>
-        <record id="view_form_partner_inherited" model="ir.ui.view">
-            <field name="name">Custom Partner Form</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form" />
-            <field name="arch" type="xml">
-               
+	<data>
+		<record id="view_form_partner_inherited" model="ir.ui.view">
+			<field name="name">Custom Partner Form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<xpath expr='//form/sheet/notebook/page[@name="sales_purchases"]/group/group[@name="sale"]'
+					position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//page[@name='sales_purchases']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//page[@name='internal_notes']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@widget='radio']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='type']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='function']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='mobile']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='zip']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='state_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='website']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='title']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='category_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='vat']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//form/div[@class='alert alert-warning oe_edit_only']"
+					position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<!--  -->
+				<xpath expr="//form/sheet/div[@name='button_box']"
+					position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr='//form/sheet/field[@name="image_1920"]'
+					position="before">
+					<style>
+						.oe_avatar1 {
+						float: right;
+						margin-bottom: 10px;
+						width: 200px;
+						height: 200px;
+						}
 
-                <xpath expr='//form/sheet/notebook/page[@name="sales_purchases"]/group/group[@name="sale"]' position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <!-- <xpath expr='//form/sheet/notebook/page[@name="accounting"]/group/group[@name="banks"]' position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath> -->
-
-                <xpath expr="//page[@name='sales_purchases']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-
-                <!-- <xpath expr="//page[@name='accounting']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath> -->
-
-                <xpath expr="//page[@name='internal_notes']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-
-                <xpath expr="//field[@widget='radio']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='type']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-
-                <xpath expr="//field[@name='function']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='mobile']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='zip']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='state_id']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-
-                <xpath expr="//field[@name='website']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='title']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='category_id']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='vat']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-
-                
-
-                <xpath expr="//form/div[@class='alert alert-warning oe_edit_only']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-            </field>
-        </record>
-    </data>
+						.oe_avatar1 img {
+						width: 200px;
+						height: 200px;
+						object-fit: fill;
+						vertical-align: top;
+						border: 1px solid #dee2e6;
+						}
+					</style>
+				</xpath>
+				<xpath expr='//form/sheet/field[@name="image_1920"]'
+					position="attributes">
+					<attribute name="class">oe_avatar1</attribute>
+					<attribute name="options" />
+				</xpath>
+			</field>
+		</record>
+		<record id="view_form_partner_inherited_1" model="ir.ui.view">
+			<field name="name">Custom Partner Form 1</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="account.view_partner_property_form" />
+			<field name="arch" type="xml">
+				<page name="accounting" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</page>
+			</field>
+		</record>
+	</data>
 </odoo>

@@ -41,19 +41,23 @@
           .oe_avatar1 {
           float: right;
           margin-bottom: 10px;
-
-          &gt; img {
-          max-width: 200%;
-          max-height: 200%;
-          vertical-align: top;
-          border: 1px solid $o-gray-300;
+          width: 200px;
+          height: 200px;
           }
+
+          .oe_avatar1 img {
+          width: 200px;
+          height: 200px;
+          object-fit: fill;
+          vertical-align: top;
+          border: 1px solid #dee2e6;
           }
         </style>
       </xpath>
       <xpath expr='//form/sheet/field[@name="image_1920"]'
         position="attributes">
         <attribute name="class">oe_avatar1</attribute>
+        <attribute name="options" />
       </xpath>
     </field>
   </record>
