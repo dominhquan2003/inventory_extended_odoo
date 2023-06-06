@@ -63,8 +63,8 @@
 						}
 
 						.oe_avatar1 img {
-						width: 200px;
-						height: 200px;
+						width: 200px !important;
+						height: auto;
 						object-fit: fill;
 						vertical-align: top;
 						border: 1px solid #dee2e6;
