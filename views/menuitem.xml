@@ -1,7 +1,7 @@
 <odoo>
 	<data>
 		<!-- Ghi đè view của menu gốc -->
-			<!-- Thay đổi parent của các menu con -->
+		<!-- Thay đổi parent của các menu con -->
 		<record id="sale.menu_sale_quotations" model="ir.ui.menu">
 			<field name="parent_id">178</field>
 		</record>
@@ -11,6 +11,8 @@
 		<record id="sale.menu_product_template_action" model="ir.ui.menu">
 			<field name="parent_id">178</field>
 		</record>
+
+
 		<!-- Ẩn menu không cần -->
 		<record id="sale.sale_order_menu" model="ir.ui.menu">
 			<field name="active">False</field>
@@ -27,32 +29,5 @@
 		<record id="sale.product_menu_catalog" model="ir.ui.menu">
 			<field name="active">False</field>
 		</record>
-		<!--
-		<record id="sale.menu_sale_report" model="ir.ui.menu">
-			<field name="active">False</field>
-		</record>
-		<record id="sale.menu_sale_config" model="ir.ui.menu">
-			<field name="active">True</field>
-		</record>
-
-		<record id="sale.menu_sale_quotations" model="ir.ui.menu">
-			<field name="active">False</field>
-		</record>
-
-		<record id="sale.report_sales_team" model="ir.ui.menu">
-			<field name="active">False</field>
-		</record>
-		<record id="sale.menu_products" model="ir.ui.menu">
-			<field name="active">False</field>
-		</record>
-		<record id="sale.menu_product_pricelist_main" model="ir.ui.menu">
-			<field name="active">False</field>
-		</record>
-
-		<record id="sale.product_menu_catalog" model="ir.ui.menu">
-			<field name="active">True</field>
-		</record> -->
-
-
 	</data>
 </odoo>
