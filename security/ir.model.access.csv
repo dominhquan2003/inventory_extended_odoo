@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_sale_customized_customer,sale_customized.customer,newsale.model_res_partner,base.group_user,1,1,1,1
 access_sale_customized_customerproduct,sale_customized.product,newsale.model_product_template,base.group_user,1,1,1,1
 access_sale_customized_order,sale_customized.order,newsale.model_sale_order,base.group_user,1,1,1,1
+access_sale_customized_employee,sale_customized.employee,newsale.model_hr_employee,base.group_user,1,1,1,1
