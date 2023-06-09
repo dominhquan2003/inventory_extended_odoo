@@ -30,7 +30,18 @@
 				<xpath expr="//field[@name='zip']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
+				
+				
+
 				<xpath expr="//field[@name='state_id']" position="attributes">
+					<attribute name="placeholder">Tỉnh/Thành Phố</attribute>
+				</xpath>
+				<xpath expr="//field[@name='lang']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+
+
+				<xpath expr="//field[@name='city']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="//field[@name='website']" position="attributes">
@@ -54,6 +65,8 @@
 					position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
+
+
 				<xpath expr='//form/sheet/field[@name="image_1920"]'
 					position="before">
 					<style>
