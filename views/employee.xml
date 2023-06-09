@@ -17,9 +17,8 @@
                         <xpath expr="//field[@name='parent_id']" position="attributes">
                               <attribute name="invisible">1</attribute>
                         </xpath>
-                        <xpath expr="//field[@name='company_id']" position="attributes">
-                              <attribute name="invisible">1</attribute>
-                        </xpath>
+                        
+
                         <xpath expr="//field[@name='coach_id']" position="attributes">
                               <attribute name="invisible">1</attribute>
 
@@ -30,12 +29,15 @@
                         </xpath>
                         <xpath expr="//field[@name='department_id']" position="attributes">
                               <attribute name="invisible">1</attribute>
-
+                        </xpath>
+                        <xpath expr="//form/sheet/group/group/field[@name='company_id']" position="after">
+                              <field name="department_id"/>
                         </xpath>
 
-                        <xpath expr='//form/sheet/div/field[@name="image_1920"]'
-					position="before">
-					<style>
+
+
+                        <xpath expr='//form/sheet/div/field[@name="image_1920"]' position="before">
+                              <style>
 						.oe_avatar1 {
 						float: right;
 						margin-bottom: 10px;
@@ -48,13 +50,12 @@
 						vertical-align: top;
 						border: 1px solid #dee2e6;
 						}
-					</style>
-				</xpath>
-				<xpath expr='//form/sheet/div/field[@name="image_1920"]'
-					position="attributes">
-					<attribute name="class">oe_avatar1</attribute>
-					<attribute name="options" />
-				</xpath>
+                              </style>
+                        </xpath>
+                        <xpath expr='//form/sheet/div/field[@name="image_1920"]' position="attributes">
+                              <attribute name="class">oe_avatar1</attribute>
+                              <attribute name="options" />
+                        </xpath>
                   </field>
             </record>
 
