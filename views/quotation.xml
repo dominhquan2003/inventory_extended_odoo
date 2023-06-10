@@ -1,42 +1,42 @@
 <odoo>
-      <data>
-            <record id="view_form_quotation_edited" model="ir.ui.view">
-                  <field name="name">Custom quotation Form</field>
-                  <field name="model">sale.order</field>
-                  <field name="inherit_id" ref="sale.view_order_form" />
-                  <field name="arch" type="xml">
-                        <xpath expr="//form/sheet/group/group/label[@for='pricelist_id']" position="attributes">
-                              <attribute name="invisible">1</attribute>
-                        </xpath>
-                        <xpath expr="//form/sheet/group/group/field[@name='pricelist_id']" position="attributes">
-                              <attribute name="invisible">1</attribute>
-                        </xpath>
-                        <xpath expr="//field[@name='payment_term_id']" position="attributes">
-                              <attribute name="invisible">1</attribute>
-                        </xpath>
-                        <xpath expr="//field[@name='sale_order_template_id']" position="attributes">
-                              <attribute name="invisible">1</attribute>
-                        </xpath>
-                        <xpath expr="//form/sheet/notebook/page[@name='other_information']" position="attributes">
-                              <attribute name="invisible">1</attribute>
-                        </xpath>
-                        <xpath expr="//form/sheet/notebook/page[@name='customer_signature']" position="attributes">
-                              <attribute name="invisible">1</attribute>
-                        </xpath>
+	<data>
+		<record id="view_form_quotation_edited" model="ir.ui.view">
+			<field name="name">Custom quotation Form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//form/sheet/group/group/label[@for='pricelist_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/group/group/field[@name='pricelist_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='payment_term_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//field[@name='sale_order_template_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/notebook/page[@name='other_information']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/notebook/page[@name='customer_signature']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
 
-                  </field>
-            </record>
-            <record id="view_form_quotation_pageoptional" model="ir.ui.view">
-                  <field name="name">Custom quotation Form</field>
-                  <field name="model">sale.order</field>
-                  <field name="inherit_id" ref="sale_management.sale_order_form_quote" />
-                  <field name="arch" type="xml">                  
-                        <xpath expr="//page[@name='optional_products']" position="attributes">
-                              <attribute name="invisible">1</attribute>
-                        </xpath>
-                  </field>
-            </record>
+			</field>
+		</record>
+		<record id="view_form_quotation_pageoptional" model="ir.ui.view">
+			<field name="name">Custom quotation Form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale_management.sale_order_form_quote" />
+			<field name="arch" type="xml">
+				<xpath expr="//page[@name='optional_products']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+			</field>
+		</record>
 
-   
-      </data>
+
+	</data>
 </odoo>
