@@ -11,9 +11,6 @@
 		<record id="sale.menu_product_template_action" model="ir.ui.menu">
 			<field name="parent_id">178</field>
 		</record>
-		<record id="hr.menu_hr_employee_user" model="ir.ui.menu">
-			<field name="parent_id">178</field>
-		</record>
 
 		<!-- Ẩn menu không cần -->
 		<record id="sale.sale_order_menu" model="ir.ui.menu">
