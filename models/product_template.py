@@ -8,4 +8,7 @@ class Product(models.Model):
         "res.partner", 
         string="Customer"
     )
+    detailed_type = fields.Selection(
+        default='product',
+    )
     
