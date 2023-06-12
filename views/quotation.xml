@@ -41,6 +41,14 @@
 				<field name="partner_id" position="attributes">
 					<attribute name="context">{'res_partner_search_mode': 'customer', 'show_vat': True}</attribute>
 				</field>
+				<!-- <field name="product_template_id" position="attributes">
+					<attribute name="domain" />
+				</field> -->
+				<!-- <xpath
+					expr="//form/sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_template_id']"
+					position="attributes">
+					<attribute name="domain" />
+				</xpath> -->
 			</field>
 		</record>
 		<record id="view_form_quotation_pageoptional" model="ir.ui.view">
