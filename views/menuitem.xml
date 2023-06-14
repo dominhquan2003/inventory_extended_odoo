@@ -3,13 +3,13 @@
 		<!-- Ghi đè view của menu gốc -->
 		<!-- Thay đổi parent của các menu con -->
 		<record id="sale.menu_sale_quotations" model="ir.ui.menu">
-			<field name="parent_id">178</field>
+			<field name="parent_id" ref="sale.sale_menu_root" />
 		</record>
 		<record id="sale.res_partner_menu" model="ir.ui.menu">
-			<field name="parent_id">178</field>
+			<field name="parent_id" ref="sale.sale_menu_root" />
 		</record>
 		<record id="sale.menu_product_template_action" model="ir.ui.menu">
-			<field name="parent_id">178</field>
+			<field name="parent_id" ref="sale.sale_menu_root" />
 		</record>
 
 		<!-- Ẩn menu không cần -->
