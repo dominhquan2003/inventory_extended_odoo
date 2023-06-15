@@ -88,7 +88,7 @@
         <attribute name="invisible">1</attribute>
       </field>
       <field name="qty_available" position="before">
-        <field name="outgoing_qty" position="move"/>
+        <field name="outgoing_qty" />
       </field>
     </field>
   </record>
