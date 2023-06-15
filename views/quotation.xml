@@ -19,7 +19,9 @@
 					position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-
+				<div name="button_box" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</div>
 				<xpath expr="//field[@name='payment_term_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
@@ -52,6 +54,24 @@
 				<field name="product_template_id" position="attributes">
 					<attribute name="domain">[('customer_id', '=', partner_id_test)]</attribute>
 				</field>
+				<button id="create_invoice_percentage" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</button>
+				<button id="create_invoice" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</button>
+				<button name="action_quotation_send" states="sent,sale" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</button>
+				<button name="action_quotation_send" states="draft" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</button>
+				<field name="state" widget="statusbar" position="attributes">
+					<attribute name="statusbar_visible">draft,sale</attribute>
+				</field>
+				<!-- <field name="product_id" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field> -->
 			</field>
 		</record>
 		<record id="view_form_quotation_pageoptional" model="ir.ui.view">
@@ -64,7 +84,5 @@
 				</xpath>
 			</field>
 		</record>
-
-
 	</data>
 </odoo>

@@ -68,3 +68,31 @@ msgstr "SL hiện có"
 #, python-format
 msgid "Forecasted Quantity"
 msgstr "SL cần SX"
+
+#. module: sale
+#: model:ir.model.fields.selection,name:sale.selection__sale_order__state__done
+msgid "Locked"
+msgstr "Xong"
+
+#. module: sale
+#. odoo-python
+#: code:addons/sale/models/sale_order.py:0
+#: model:ir.model.fields.selection,name:sale.selection__sale_order__state__draft
+#: model_terms:ir.ui.view,arch_db:sale.crm_team_view_kanban_dashboard
+#: model_terms:ir.ui.view,arch_db:sale.view_quotation_tree
+#, python-format
+msgid "Quotation"
+msgstr "Nháp"
+
+#. module: sale
+#. odoo-python
+#: code:addons/sale/models/sale_order.py:0
+#: model:ir.model,name:sale.model_sale_order
+#: model:ir.model.fields,field_description:sale.field_res_partner__sale_order_ids
+#: model:ir.model.fields,field_description:sale.field_res_users__sale_order_ids
+#: model:ir.model.fields.selection,name:sale.selection__sale_order__state__sale
+#: model:ir.model.fields.selection,name:sale.selection__sale_report__state__sale
+#: model_terms:ir.ui.view,arch_db:sale.view_order_form
+#, python-format
+msgid "Sales Order"
+msgstr "Đang SX"
