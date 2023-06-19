@@ -58,6 +58,11 @@ msgstr "SL đặt hàng"
 msgid "Available Quantity"
 msgstr "SL hiện có"
 
+#. module: newsale
+#: model:ir.model.fields,field_description:newsale.field_product_template__customer_id
+msgid "Customer"
+msgstr "Khách hàng"
+
 #. module: stock
 #. odoo-python
 #: code:addons/stock/models/product.py:0

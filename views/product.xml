@@ -90,6 +90,9 @@
       <field name="qty_available" position="before">
         <field name="outgoing_qty" />
       </field>
+      <field name="name" position="before">
+        <field name="customer_id" />
+      </field>
     </field>
   </record>
 </odoo>
