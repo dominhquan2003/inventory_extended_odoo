@@ -101,3 +101,12 @@ msgstr "Nháp"
 #, python-format
 msgid "Sales Order"
 msgstr "Đang SX"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.res_partner_view_form_private
+#: model_terms:ir.ui.view,arch_db:base.view_company_form
+#: model_terms:ir.ui.view,arch_db:base.view_partner_address_form
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_res_bank_form
+msgid "Street 2..."
+msgstr "Đường, Phường, Quận"
