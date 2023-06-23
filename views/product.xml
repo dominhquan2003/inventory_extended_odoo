@@ -32,7 +32,7 @@
       </xpath>
       <xpath expr='//form/sheet/div[@class="oe_title"]' position="after">
         <group>
-          <field name="customer_id" class="oe_inline" string="Khách hàng" />
+          <field name="customer_id" class="oe_inline" string="Khách hàng" style="width: 50%!important;"/>
           <field name="name" class="oe_inline" string="Tên/mã sản phẩm" />
           <field name="list_price" class="oe_inline" widget='monetary'
             options="{'currency_field': 'currency_id', 'field_digits': True}" />
