@@ -21,7 +21,7 @@
     'application': True,
 
     # any module necessary for this one to work correctly
-    'depends': ['sale_management','stock','hr','base'],
+    'depends': ['sale_management','stock',],
 
     # always loaded
     'data': [
@@ -30,7 +30,6 @@
         'views/customer.xml',
         'views/product.xml',
         'views/quotation.xml',
-        'views/employee.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
