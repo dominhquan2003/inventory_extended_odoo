@@ -96,5 +96,25 @@
 				</page>
 			</field>
 		</record>
+		<record id="res_partner_view_form_inherit_mail_1" model="ir.ui.view">
+			<field name="name">View form inherit mail 1</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="mail.res_partner_view_form_inherit_mail" />
+			<field name="arch" type="xml">
+				<field name="email" position="attributes">
+					<attribute name="required">True</attribute>
+				</field>
+			</field>
+		</record>
+		<record id="res_partner_view_form_1" model="ir.ui.view">
+			<field name="name">res_partner view form mail 1</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="sms.res_partner_view_form" />
+			<field name="arch" type="xml">
+				<field name="phone" position="attributes">
+					<attribute name="required">True</attribute>
+				</field>
+			</field>
+		</record>
 	</data>
 </odoo>

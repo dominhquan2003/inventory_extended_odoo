@@ -8,6 +8,12 @@ class Partner(models.Model):
     country_id = fields.Many2one(
         default=241
     )
+    phone = fields.Char(
+        required=True
+    )
+    email = fields.Char(
+        required=True
+    )
 
     @api.constrains('phone')
     def get_phone_type(self):
