@@ -80,6 +80,10 @@
 					<attribute name="class">oe_avatar1</attribute>
 					<attribute name="options" />
 				</xpath>
+				<!-- adding label for name field -->
+				<field name="company_type" position="after">
+					<label for="company" string="Tên"/>
+				</field>
 			</field>
 		</record>
 		<record id="view_form_partner_inherited_1" model="ir.ui.view">
