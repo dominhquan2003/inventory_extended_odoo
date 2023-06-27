@@ -8,10 +8,3 @@ class Partner(models.Model):
     country_id = fields.Many2one(
         default=241
     )
-
-    @api.constrains('phone')
-    def get_phone_type(self):
-        if not 10 < len(self.phone.strip()) < 17:
-            raise ValidationError("Invalid phone number!")
-        
-   

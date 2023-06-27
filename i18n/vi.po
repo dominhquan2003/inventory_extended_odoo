@@ -110,3 +110,31 @@ msgstr "Đang SX"
 #: model_terms:ir.ui.view,arch_db:base.view_res_bank_form
 msgid "Street 2..."
 msgstr "Đường, Phường, Quận"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_language_export__state
+#: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__state
+#: model:ir.model.fields,field_description:base.field_res_partner__state_id
+#: model:ir.model.fields,field_description:base.field_res_users__state_id
+#: model:ir.model.fields,field_description:base.field_res_users_deletion__state
+#: model_terms:ir.ui.view,arch_db:base.res_partner_view_form_private
+#: model_terms:ir.ui.view,arch_db:base.view_company_form
+#: model_terms:ir.ui.view,arch_db:base.view_country_state_form
+#: model_terms:ir.ui.view,arch_db:base.view_country_state_tree
+#: model_terms:ir.ui.view,arch_db:base.view_module_filter
+#: model_terms:ir.ui.view,arch_db:base.view_partner_address_form
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model_terms:ir.ui.view,arch_db:base.view_res_bank_form
+msgid "State"
+msgstr "Tỉnh/Tp"
+
+#. module: base
+#  #: model:ir.module.category,name:base.module_category_sales
+#  #: model:ir.module.category,name:base.module_category_sales_sales
+#  #: model:ir.module.module,shortdesc:base.module_sale
+#  #: model:ir.module.module,shortdesc:base.module_sale_management
+#  #: model_terms:ir.ui.view,arch_db:base.user_groups_view
+#  #: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: model:ir.ui.menu,name:sale.sale_menu_root
+msgid "Sales"
+msgstr "Đơn hàng"
