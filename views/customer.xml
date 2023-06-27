@@ -5,8 +5,7 @@
 			<field name="model">res.partner</field>
 			<field name="inherit_id" ref="base.view_partner_form" />
 			<field name="arch" type="xml">
-				<xpath expr='//form/sheet/notebook/page[@name="sales_purchases"]/group/group[@name="sale"]'
-					position="attributes">
+				<xpath expr='//form/sheet/notebook/page[@name="sales_purchases"]/group/group[@name="sale"]' position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="//page[@name='sales_purchases']" position="attributes">
@@ -51,19 +50,16 @@
 				<xpath expr="//field[@name='vat']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<xpath expr="//form/div[@class='alert alert-warning oe_edit_only']"
-					position="attributes">
+				<xpath expr="//form/div[@class='alert alert-warning oe_edit_only']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<!--  -->
-				<xpath expr="//form/sheet/div[@name='button_box']"
-					position="attributes">
+				<xpath expr="//form/sheet/div[@name='button_box']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
 
 
-				<xpath expr='//form/sheet/field[@name="image_1920"]'
-					position="before">
+				<xpath expr='//form/sheet/field[@name="image_1920"]' position="before">
 					<style>
 						.oe_avatar1 {
 						float: right;
@@ -79,8 +75,7 @@
 						}
 					</style>
 				</xpath>
-				<xpath expr='//form/sheet/field[@name="image_1920"]'
-					position="attributes">
+				<xpath expr='//form/sheet/field[@name="image_1920"]' position="attributes">
 					<attribute name="class">oe_avatar1</attribute>
 					<attribute name="options" />
 				</xpath>
@@ -116,5 +111,30 @@
 				</field>
 			</field>
 		</record>
+		<record id="res_partner_view_search_filter" model="ir.ui.view">
+			<field name="name">res_partner view search filter</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="account.res_partner_view_search" />
+			<field name="arch" type="xml">
+				<xpath expr="//filter[@name='supplier']" position="attributes">
+					<attribute name="attrs">{'invisible': True, 'readonly': True}</attribute>
+				</xpath>
+				<xpath expr="//filter[@name='type_person']" position="attributes">
+					<attribute name="attrs">{'invisible': True, 'readonly': True}</attribute>
+				</xpath>
+				<xpath expr="//filter[@name='type_company']" position="attributes">
+					<attribute name="attrs">{'invisible': True, 'readonly': True}</attribute>
+				</xpath>
+				<xpath expr="//filter[@name='inactive']" position="attributes">
+					<attribute name="attrs">{'invisible': True, 'readonly': True}</attribute>
+				</xpath>
+
+
+				 
+
+			</field>
+		</record>
+
+
 	</data>
 </odoo>

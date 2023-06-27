@@ -13,3 +13,5 @@ class Partner(models.Model):
     def get_phone_type(self):
         if not 10 < len(self.phone.strip()) < 17:
             raise ValidationError("Invalid phone number!")
+        
+   
