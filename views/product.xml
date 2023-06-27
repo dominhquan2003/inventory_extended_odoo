@@ -1,45 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <!-- Form Edited -->
   <record id="view_form_product_edited" model="ir.ui.view">
     <field name="name">Edited Product Fields</field>
     <field name="model">product.template</field>
-    <field name="inherit_id"
-      ref="product.product_template_only_form_view" />
+    <field name="inherit_id" ref="product.product_template_only_form_view" />
     <field name="arch" type="xml">
-      <xpath
-        expr='//form/sheet/div[@name="button_box"]'
-        position="attributes">
+      <xpath expr='//form/sheet/div[@name="button_box"]' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-      <xpath
-        expr='//form/sheet/div[@name="options"]'
-        position="attributes">
+      <xpath expr='//form/sheet/div[@name="options"]' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-      <xpath
-        expr='//form/header'
-        position="attributes">
+      <xpath expr='//form/header' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-      <xpath
-        expr='//form/sheet/notebook'
-        position="attributes">
+      <xpath expr='//form/sheet/notebook' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-      <xpath expr='//form/sheet/div[@class="oe_title"]'
-        position="attributes">
+      <xpath expr='//form/sheet/div[@class="oe_title"]' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
       <xpath expr='//form/sheet/div[@class="oe_title"]' position="after">
         <group>
           <field name="customer_id" class="oe_inline" string="Khách hàng" style="width: 50%!important;"/>
           <field name="name" class="oe_inline" string="Tên/mã sản phẩm" />
-          <field name="list_price" class="oe_inline" widget='monetary'
-            options="{'currency_field': 'currency_id', 'field_digits': True}" />
+          <field name="list_price" class="oe_inline" widget='monetary' options="{'currency_field': 'currency_id', 'field_digits': True}" />
         </group>
       </xpath>
-      <xpath expr='//form/sheet/field[@name="image_1920"]'
-        position="before">
+      <xpath expr='//form/sheet/field[@name="image_1920"]' position="before">
         <style>
           .oe_avatar1 {
           float: right;
@@ -55,8 +44,7 @@
           }
         </style>
       </xpath>
-      <xpath expr='//form/sheet/field[@name="image_1920"]'
-        position="attributes">
+      <xpath expr='//form/sheet/field[@name="image_1920"]' position="attributes">
         <attribute name="class">oe_avatar1</attribute>
         <attribute name="options" />
       </xpath>
@@ -66,8 +54,7 @@
   <record id="view_list_product_edited" model="ir.ui.view">
     <field name="name">Edited Product Fields</field>
     <field name="model">product.template</field>
-    <field name="inherit_id"
-      ref="product.product_template_tree_view" />
+    <field name="inherit_id" ref="product.product_template_tree_view" />
     <field name="arch" type="xml">
       <field name="default_code" position="attributes">
         <attribute name="invisible">1</attribute>
@@ -93,6 +80,54 @@
       <field name="name" position="before">
         <field name="customer_id" />
       </field>
+
+      <field name="qty_available" position="before">
+        <field name="total" />
+      </field>
+
+      <xpath expr="//field[@name='name']" position="attributes">
+        <attribute name="string">Mã hàng</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='outgoing_qty']" position="attributes">
+        <attribute name="string">Đặt hàng</attribute>
+      </xpath>
+
     </field>
   </record>
+
+
+  <record id="view_list_product_edited_2" model="ir.ui.view">
+    <field name="name">Edited Product Fields 2</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="stock.view_stock_product_template_tree" />
+    <field name="arch" type="xml">
+
+      <xpath expr="//field[@name='responsible_id']" position="attributes">
+        <attribute name="string">NV sales</attribute>
+      </xpath>
+      <xpath expr="//field[@name='qty_available']" position="attributes">
+        <attribute name="string">Đã sản xuất</attribute>
+      </xpath>
+      <xpath expr="//field[@name='virtual_available']" position="attributes">
+        <attribute name="string">Cần sản xuất</attribute>
+      </xpath>
+
+
+    </field>
+  </record>
+
+
+
+
+
+  <record id="view_filter" model="ir.ui.view">
+    <field name="name">Edited Product filter</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_search_view" />
+    <field name="arch" type="xml">
+      <xpath expr="//filter[@name='filter_to_sell']" position="replace"/>
+    </field>
+  </record>
+
 </odoo>
