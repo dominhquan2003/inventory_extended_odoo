@@ -12,8 +12,11 @@ class Product(models.Model):
     detailed_type = fields.Selection(
         default='product',
     )
-    total = fields.Float('Total', compute='_compute_total', store=True)
-
+    # làm field total và kí hiệu tiền tệ
+    total = fields.Float('Tổng', compute='_compute_total', store=True)
+    currency_id = fields.Many2one(
+        'res.currency',
+        default=lambda self: self.env.company.currency_id.id)
     @api.depends('qty_available', 'list_price')
     def _compute_total(self):
         for product in self:

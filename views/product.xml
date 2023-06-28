@@ -81,8 +81,10 @@
         <field name="customer_id" />
       </field>
 
-      <field name="qty_available" position="before">
-        <field name="total" />
+      <field name="virtual_available" position="after">
+        <field name="total" widget="monetary" width="80" options="{'currency_field': 'currency_id'}" />
+				<!-- Để thấy được đơn vị tiền tệ phải có field này và ẩn nó đi -->
+				<field name="currency_id" invisible="1" />
       </field>
 
       <xpath expr="//field[@name='name']" position="attributes">
