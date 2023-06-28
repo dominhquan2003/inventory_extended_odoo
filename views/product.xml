@@ -142,22 +142,10 @@
       <xpath expr='//filter[@name="services"]' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-      <!-- <xpath expr="//filter[@name='filter_to_purchase']" position="replace"/>
-      <xpath expr="//filter[@name='consumable']" position="replace"/>
-      <xpath expr="//filter[@name='services']" position="replace"/> -->
+    
     </field>
 
   </record>
-  <!-- replace cac filter khong can thiet cua Ma Hang (SP) -->
-  <!-- <record id="view_filter_product" model="ir.ui.view">
-    <field name="name">Edited Product filter expand</field>
-    <field name="model">product.template</field>
-    <field name="inherit_id" ref="product.product_search_form_view" />
-    <field name="arch" type="xml">
-      <xpath expr="//filter[@name='Product']" position="replace"/>
-    </field>
-   
-  </record> -->
 
 
 
