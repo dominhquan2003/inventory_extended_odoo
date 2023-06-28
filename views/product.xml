@@ -131,7 +131,6 @@
       <xpath expr="//filter[@name='services']" position="replace" />
       <xpath expr="//filter[@name='consumable']" position="replace" />
       <xpath expr="//filter[@name='filter_to_purchase']" position="replace" />
-      <xpath expr="//filter[@name='filter_to_sell']" position="replace" />
     </field>
   </record>
 
