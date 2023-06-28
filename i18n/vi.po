@@ -150,3 +150,13 @@ msgstr "Ngày đặt hàng"
 #: model_terms:ir.ui.view,arch_db:sale.view_quotation_tree
 msgid "Number"
 msgstr "Đơn hàng"
+
+#. module: sale
+#: model:ir.model.fields,field_description:sale.field_sale_order__amount_total
+#: model:ir.model.fields,field_description:sale.field_sale_order_line__price_total
+#: model:ir.model.fields,field_description:sale.field_sale_report__price_total
+#: model_terms:ir.ui.view,arch_db:sale.portal_my_orders
+#: model_terms:ir.ui.view,arch_db:sale.portal_my_quotations
+#: model_terms:ir.ui.view,arch_db:sale.view_order_line_tree
+msgid "Total"
+msgstr "Trị giá"
