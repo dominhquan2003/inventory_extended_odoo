@@ -82,7 +82,13 @@
 				</xpath>
 				<!-- adding label for name field -->
 				<field name="company_type" position="after">
-					<label for="company" string="Tên"/>
+					<label for="company" string="Tên" />
+				</field>
+				<field name="child_ids" position="attributes">
+					<attribute name="context">{'default_parent_id': active_id, 'default_street': street,
+						'default_street2': street2, 'default_city': city, 'default_state_id': state_id,
+						'default_zip': zip, 'default_country_id': country_id, 'default_lang': lang,
+						'default_user_id': user_id, 'default_type': 'contact'}</attribute>
 				</field>
 			</field>
 		</record>
@@ -122,11 +128,11 @@
 			<field name="model">res.partner</field>
 			<field name="inherit_id" ref="account.res_partner_view_search" />
 			<field name="arch" type="xml">
-				<xpath expr="//filter[@name='customer']" position="replace"/>
-				<xpath expr="//filter[@name='supplier']" position="replace"/>
-				<xpath expr="//filter[@name='type_person']" position="replace"/>
-				<xpath expr="//filter[@name='inactive']" position="replace"/>
-				<xpath expr="//filter[@name='type_company']" position="replace"/>
+				<xpath expr="//filter[@name='customer']" position="replace" />
+				<xpath expr="//filter[@name='supplier']" position="replace" />
+				<xpath expr="//filter[@name='type_person']" position="replace" />
+				<xpath expr="//filter[@name='inactive']" position="replace" />
+				<xpath expr="//filter[@name='type_company']" position="replace" />
 			</field>
 		</record>
 
