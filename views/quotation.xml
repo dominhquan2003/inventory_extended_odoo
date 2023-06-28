@@ -46,6 +46,7 @@
 						[('customer_rank','&gt;', 0), ('type', '!=', 'private'), ('company_id', 'in', (False,
 						company_id))]
 					</attribute>
+					<attribute name="options">{'no_create': True}</attribute>
 				</field>
 				<!-- filter products base on customer -->
 				<field name="product_template_id" position="after">
