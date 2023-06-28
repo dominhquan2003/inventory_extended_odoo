@@ -116,25 +116,17 @@
 				</field>
 			</field>
 		</record>
+		<!-- Bỏ filter trong khách hàng -->
 		<record id="res_partner_view_search_filter" model="ir.ui.view">
 			<field name="name">res_partner view search filter</field>
 			<field name="model">res.partner</field>
 			<field name="inherit_id" ref="account.res_partner_view_search" />
 			<field name="arch" type="xml">
-				<xpath expr="//filter[@name='supplier']" position="attributes">
-					<attribute name="attrs">{'invisible': True, 'readonly': True}</attribute>
-				</xpath>
-				<xpath expr="//filter[@name='type_person']" position="attributes">
-					<attribute name="attrs">{'invisible': True, 'readonly': True}</attribute>
-				</xpath>
-				<xpath expr="//filter[@name='type_company']" position="attributes">
-					<attribute name="attrs">{'invisible': True, 'readonly': True}</attribute>
-				</xpath>
-				<xpath expr="//filter[@name='inactive']" position="attributes">
-					<attribute name="attrs">{'invisible': True, 'readonly': True}</attribute>
-				</xpath>
-
-
+				<xpath expr="//filter[@name='customer']" position="replace"/>
+				<xpath expr="//filter[@name='supplier']" position="replace"/>
+				<xpath expr="//filter[@name='type_person']" position="replace"/>
+				<xpath expr="//filter[@name='inactive']" position="replace"/>
+				<xpath expr="//filter[@name='type_company']" position="replace"/>
 			</field>
 		</record>
 
