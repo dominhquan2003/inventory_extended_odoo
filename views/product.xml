@@ -27,9 +27,11 @@
 
       <xpath expr='//form/sheet/div[@class="oe_title"]' position="after">
         <group>
-          <field name="customer_id" class="oe_inline" string="Khách hàng" style="width: 50%!important;"/>
+          <field name="customer_id" class="oe_inline" string="Khách hàng"
+            style="width: 50%!important;" options="{'no_create': True}" />
           <field name="name" class="oe_inline" string="Mã sản phẩm" />
-          <field name="list_price" class="oe_inline" widget='monetary' options="{'currency_field': 'currency_id', 'field_digits': True}" />
+          <field name="list_price" class="oe_inline" widget='monetary'
+            options="{'currency_field': 'currency_id', 'field_digits': True}" />
         </group>
       </xpath>
       <xpath expr='//form/sheet/field[@name="image_1920"]' position="before">
@@ -124,15 +126,13 @@
   </record>
 
 
-
-
   <!-- replace cac filter khong can thiet cua Ma Hang -->
   <record id="view_filter" model="ir.ui.view">
     <field name="name">Edited Product filter</field>
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product.product_template_search_view" />
     <field name="arch" type="xml">
-      <xpath expr="//filter[@name='filter_to_sell']" position="replace"/>
+      <xpath expr="//filter[@name='filter_to_sell']" position="replace" />
       <xpath expr="//filter[@name='filter_to_purchase']" position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
@@ -142,7 +142,7 @@
       <xpath expr='//filter[@name="services"]' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-    
+
     </field>
 
   </record>
@@ -156,9 +156,6 @@
     </field>
    
   </record> -->
-
-
-
 
 
 </odoo>
