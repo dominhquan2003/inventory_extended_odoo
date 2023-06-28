@@ -5,7 +5,8 @@
 			<field name="model">res.partner</field>
 			<field name="inherit_id" ref="base.view_partner_form" />
 			<field name="arch" type="xml">
-				<xpath expr='//form/sheet/notebook/page[@name="sales_purchases"]/group/group[@name="sale"]' position="attributes">
+				<xpath expr='//form/sheet/notebook/page[@name="sales_purchases"]/group/group[@name="sale"]'
+					position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="//page[@name='sales_purchases']" position="attributes">
@@ -79,6 +80,10 @@
 					<attribute name="class">oe_avatar1</attribute>
 					<attribute name="options" />
 				</xpath>
+				<!-- adding label for name field -->
+				<field name="company_type" position="after">
+					<label for="company" string="Tên"/>
+				</field>
 			</field>
 		</record>
 		<record id="view_form_partner_inherited_1" model="ir.ui.view">
@@ -130,8 +135,6 @@
 				</xpath>
 
 
-				 
-
 			</field>
 		</record>
 
@@ -161,6 +164,11 @@
 					<attribute name="invisible">1</attribute>
 				</field>
 			</field>
+		</record>
+		<!-- Adding domain to action -->
+		<record id="account.res_partner_action_customer"
+			model="ir.actions.act_window">
+			<field name="domain">[('customer_rank', '&gt;', 0)]</field>
 		</record>
 	</data>
 </odoo>
