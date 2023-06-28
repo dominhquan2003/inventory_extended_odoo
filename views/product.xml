@@ -83,9 +83,7 @@
       <field name="qty_available" position="before">
         <field name="outgoing_qty" />
       </field>
-      <!-- <field name="name" position="before">
-        <field name="customer_id" />
-      </field> -->
+
 
       <field name="virtual_available" position="after">
         <field name="total" widget="monetary" width="80" options="{'currency_field': 'currency_id'}" />
@@ -103,8 +101,6 @@
 
     </field>
   </record>
-
-
   <record id="view_list_product_edited_2" model="ir.ui.view">
     <field name="name">Edited Product Fields 2</field>
     <field name="model">product.template</field>
@@ -124,8 +120,6 @@
 
     </field>
   </record>
-
-
   <!-- replace cac filter khong can thiet cua Ma Hang -->
   <record id="view_filter" model="ir.ui.view">
     <field name="name">Edited Product filter</field>
@@ -146,15 +140,16 @@
     </field>
 
   </record>
-  <!-- replace cac filter khong can thiet cua Ma Hang (SP) -->
-  <!-- <record id="view_filter_product" model="ir.ui.view">
-    <field name="name">Edited Product filter expand</field>
-    <field name="model">product.template</field>
-    <field name="inherit_id" ref="product.product_search_form_view" />
+
+  <!-- <record id="view_filter_donhang" model="ir.ui.view">
+    <field name="name">Edited Product filter donhang</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation" />
     <field name="arch" type="xml">
-      <xpath expr="//filter[@name='Product']" position="replace"/>
+      
+
     </field>
-   
+
   </record> -->
 
 
