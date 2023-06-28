@@ -1,13 +1,14 @@
-from odoo import models, fields, api #type:ignore
+from xml.dom import ValidationErr
+from odoo import models, fields, api  # type:ignore
 
 
 class Product(models.Model):
     _inherit = "product.template"
 
     customer_id = fields.Many2one(
-        "res.partner", 
+        "res.partner",
         required=True,
-        domain = [('customer_rank','>', 0)]
+        domain=[('customer_rank', '>', 0)]
     )
     detailed_type = fields.Selection(
         default='product',
@@ -17,8 +18,8 @@ class Product(models.Model):
     currency_id = fields.Many2one(
         'res.currency',
         default=lambda self: self.env.company.currency_id.id)
+    
     @api.depends('qty_available', 'list_price')
     def _compute_total(self):
         for product in self:
             product.total = product.qty_available * product.list_price
-    

@@ -28,7 +28,7 @@
       <xpath expr='//form/sheet/div[@class="oe_title"]' position="after">
         <group>
           <field name="customer_id" class="oe_inline" string="Khách hàng" style="width: 50%!important;"/>
-          <field name="name" class="oe_inline" string="Mã sản phẩm" />
+          <field name="name" class="oe_inline" string="Mã hàng" />
           <field name="list_price" class="oe_inline" widget='monetary' options="{'currency_field': 'currency_id', 'field_digits': True}" />
         </group>
       </xpath>
@@ -81,9 +81,7 @@
       <field name="qty_available" position="before">
         <field name="outgoing_qty" />
       </field>
-      <!-- <field name="name" position="before">
-        <field name="customer_id" />
-      </field> -->
+
 
       <field name="virtual_available" position="after">
         <field name="total" widget="monetary" width="80" options="{'currency_field': 'currency_id'}" />
@@ -101,8 +99,6 @@
 
     </field>
   </record>
-
-
   <record id="view_list_product_edited_2" model="ir.ui.view">
     <field name="name">Edited Product Fields 2</field>
     <field name="model">product.template</field>
@@ -122,10 +118,6 @@
 
     </field>
   </record>
-
-
-
-
   <!-- replace cac filter khong can thiet cua Ma Hang -->
   <record id="view_filter" model="ir.ui.view">
     <field name="name">Edited Product filter</field>
@@ -142,22 +134,21 @@
       <xpath expr='//filter[@name="services"]' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-    
+
     </field>
 
   </record>
-  <!-- replace cac filter khong can thiet cua Ma Hang (SP) -->
-  <!-- <record id="view_filter_product" model="ir.ui.view">
-    <field name="name">Edited Product filter expand</field>
-    <field name="model">product.template</field>
-    <field name="inherit_id" ref="product.product_search_form_view" />
+
+  <!-- <record id="view_filter_donhang" model="ir.ui.view">
+    <field name="name">Edited Product filter donhang</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation" />
     <field name="arch" type="xml">
-      <xpath expr="//filter[@name='Product']" position="replace"/>
+      
+
     </field>
-   
+
   </record> -->
-
-
 
 
 
