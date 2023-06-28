@@ -65,9 +65,9 @@
       <field name="default_code" position="attributes">
         <attribute name="invisible">1</attribute>
       </field>
-      <field name="customer_id" position="attributes">
+      <!-- <field name="customer_id" position="attributes">
         <attribute name="string">Khách hàng</attribute>
-      </field>
+      </field> -->
       <field name="product_tag_ids" position="attributes">
         <attribute name="invisible">1</attribute>
       </field>
