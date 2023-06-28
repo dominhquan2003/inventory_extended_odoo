@@ -8,4 +8,3 @@ class Partner(models.Model):
     country_id = fields.Many2one(
         default=241
     )
-    tax_number = fields.Char()

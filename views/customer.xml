@@ -113,7 +113,7 @@
 				</field>
 				<!-- adding tax field -->
 				<field name="website" position="before">
-					<field name="tax_number" string="Mã số thuế"/>
+					<field name="vat" />
 				</field>
 			</field>
 		</record>
