@@ -138,3 +138,40 @@ msgstr "Tỉnh/Tp"
 #: model:ir.ui.menu,name:sale.sale_menu_root
 msgid "Sales"
 msgstr "Đơn hàng"
+
+#. module: sale
+#: model:ir.model.fields,field_description:sale.field_sale_order__create_date
+#: model_terms:ir.ui.view,arch_db:sale.view_quotation_tree
+msgid "Creation Date"
+msgstr "Ngày đặt hàng"
+
+#. module: sale
+#: model_terms:ir.ui.view,arch_db:sale.view_order_tree
+#: model_terms:ir.ui.view,arch_db:sale.view_quotation_tree
+msgid "Number"
+msgstr "Đơn hàng"
+
+#. module: sale
+#: model:ir.model.fields,field_description:sale.field_sale_order__amount_total
+#: model:ir.model.fields,field_description:sale.field_sale_order_line__price_total
+#: model:ir.model.fields,field_description:sale.field_sale_report__price_total
+#: model_terms:ir.ui.view,arch_db:sale.portal_my_orders
+#: model_terms:ir.ui.view,arch_db:sale.portal_my_quotations
+#: model_terms:ir.ui.view,arch_db:sale.view_order_line_tree
+msgid "Total"
+msgstr "Trị giá"
+
+#. module: sale
+#. odoo-python
+#: code:addons/sale/controllers/portal.py:0
+#: model:ir.model.fields,field_description:sale.field_sale_order__date_order
+#: model:ir.model.fields,field_description:sale.field_sale_report__date
+#: model_terms:ir.ui.view,arch_db:sale.portal_my_orders
+#: model_terms:ir.ui.view,arch_db:sale.sale_order_view_search_inherit_sale
+#: model_terms:ir.ui.view,arch_db:sale.view_order_form
+#: model_terms:ir.ui.view,arch_db:sale.view_order_product_search
+#: model_terms:ir.ui.view,arch_db:sale.view_order_tree
+#: model_terms:ir.ui.view,arch_db:sale.view_sales_order_filter
+#, python-format
+msgid "Order Date"
+msgstr "Ngày bắt đầu sản xuất"
