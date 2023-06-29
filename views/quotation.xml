@@ -99,10 +99,10 @@
 					<!-- <field name="qty_available" string="Đã SX"/>
 					<field name="virtual_available" string="Cần SX"/> -->
 				</xpath>
-				<!-- <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']" position="after">
-					<field name="order_line.qty_available" string="Đã SX" readonly="1"/>
-					<field name="order_line.virtual_available" string="Cần SX" readonly="1"/>
-				</xpath> -->
+				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']" position="after">
+					<field name="qty_available" string="Đã SX" readonly="1"/>
+					<!-- <field name="virtual_available" string="Cần SX" readonly="1"/> -->
+				</xpath>
 				
 
 			</field>
