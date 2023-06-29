@@ -8,3 +8,4 @@ class SaleOrderLine(models.Model):
         "res.partner",
         related='order_id.partner_id',
     )
+
