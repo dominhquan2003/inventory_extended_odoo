@@ -5,6 +5,10 @@
 			<field name="model">sale.order</field>
 			<field name="inherit_id" ref="sale.view_order_form" />
 			<field name="arch" type="xml">
+				<xpath expr="//tree/field[@name='qty_delivered']" position="attributes">
+					<attribute name="attrs">{'readonly': False}</attribute>
+				</xpath>
+
 				<xpath expr="//form/sheet/group/group/label[@for='pricelist_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
@@ -88,8 +92,17 @@
 				<xpath expr="//field[@name='date_order']" position="after">
 					<field string="Ngày giao hàng" name="commitment_date" />
 				</xpath>
+				<xpath expr="//field[@name='date_order']" position="attributes">
+					<attribute name="string">Ngày đặt hàng</attribute>
+				</xpath>
+
+
+
 			</field>
 		</record>
+
+
+
 		<record id="view_form_quotation_pageoptional" model="ir.ui.view">
 			<field name="name">Custom quotation Form</field>
 			<field name="model">sale.order</field>

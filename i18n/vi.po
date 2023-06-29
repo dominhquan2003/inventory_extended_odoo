@@ -77,7 +77,7 @@ msgstr "SL cần SX"
 #. module: sale
 #: model:ir.model.fields.selection,name:sale.selection__sale_order__state__done
 msgid "Locked"
-msgstr "Xong"
+msgstr "Đã hoàn thành"
 
 #. module: sale
 #. odoo-python
@@ -87,7 +87,7 @@ msgstr "Xong"
 #: model_terms:ir.ui.view,arch_db:sale.view_quotation_tree
 #, python-format
 msgid "Quotation"
-msgstr "Nháp"
+msgstr "Đặt hàng"
 
 #. module: sale
 #. odoo-python
