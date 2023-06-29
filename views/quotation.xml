@@ -86,21 +86,23 @@
 				<xpath expr="//tree/field[@name='product_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<field name="date_order" position="attributes">
-					<attribute name="widget">date</attribute>
-				</field>
-				<xpath expr="//field[@name='date_order']" position="after">
-					<field string="Ngày giao hàng" name="commitment_date" />
-				</xpath>
 				<xpath expr="//field[@name='date_order']" position="attributes">
-					<attribute name="string">Ngày đặt hàng</attribute>
+					<attribute name="widget">date</attribute>
 				</xpath>
-
-
-
+				<xpath expr="//field[@name='date_order'][last()]" position="attributes">
+					<attribute name="widget">date</attribute>
+				</xpath>
+				<xpath expr="//field[@name='date_order']" position="after">
+					<field name="commitment_date" />
+				</xpath>
+				<xpath expr="//field[@name='commitment_date']" position="attributes">
+					<attribute name="widget">date</attribute>
+				</xpath>
+				<xpath expr="//field[@name='validity_date']" position="before">
+					<field name="create_date" widget="date" />
+				</xpath>
 			</field>
 		</record>
-
 
 
 		<record id="view_form_quotation_pageoptional" model="ir.ui.view">
@@ -120,7 +122,7 @@
 			<field name="inherit_id" ref="sale.view_quotation_tree" />
 			<field name="arch" type="xml">
 				<field name="create_date" position="after">
-					<field name="date_order" widget="date"/>
+					<field name="date_order" widget="date" />
 				</field>
 				<field name="company_id" position="attributes">
 					<attribute name="invisible">1</attribute>

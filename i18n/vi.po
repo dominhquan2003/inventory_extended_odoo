@@ -188,3 +188,8 @@ msgstr "Bắt đầu sản xuất"
 #: model_terms:ir.ui.view,arch_db:sale.view_sale_advance_payment_inv
 msgid "Cancel"
 msgstr "Hủy đơn hàng"
+
+#. module: sale
+#: model_terms:ir.ui.view,arch_db:sale.view_order_form
+msgid "Quotation Date"
+msgstr "Ngày bắt đầu sản xuất"
