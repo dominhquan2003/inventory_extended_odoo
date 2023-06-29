@@ -129,6 +129,19 @@
 			</field>
 		</record>
 
+		<record id="view_groupby_donhang" model="ir.ui.view">
+			<field name="name">Edited Product group by donhang</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_sales_order_filter" />
+			<field name="arch" type="xml">
+				<xpath expr="//search/group" position="inside">
+					<filter string="Trạng thái đơn hàng" name="draft" domain="[]" context="{'group_by': 'state'}"/>
+					<filter string="Ngày giao hàng" name="commitment_date" context="{'group_by': 'commitment_date'}"/> 
+
+				</xpath>
+			</field>
+		</record>
+
 		<record id="view_filter_donhang" model="ir.ui.view">
 			<field name="name">Edited Product filter donhang</field>
 			<field name="model">sale.order</field>
@@ -159,43 +172,8 @@
 			</field>
 		</record>
 
-		<record id="view_groupby_donhang" model="ir.ui.view">
-			<field name="name">Edited Product group by donhang</field>
-			<field name="model">sale.order</field>
-			<field name="inherit_id" ref="sale.view_sales_order_filter" />
-			<field name="arch" type="xml">
-				<xpath expr="//search/group" position="inside">
-						<filter string="Đặt hàng" name="draft" domain="[('state','in',('draft', 'sent'))]"/>
-						<filter string="Đơn sản xuất" name="sales" domain="[('state','in',('sale','done'))]"/>
-						<filter string="Hoàn thành" name="state" domain="[('state', '=', 'done')]"/>
-						<filter string="Đã hủy" name="state" domain="[('state', '=', 'cancel')]"/>
-						<filter string="Ngày giao hàng" name="commitment_date"/>
-						<!-- <filter string="Salesperson" name="salesperson" domain="[]" context="{'group_by': 'user_id'}"/>
-						<filter name="customer" string="Customer" domain="[]" context="{'group_by': 'partner_id'}"/>
-						<filter string="Order Date" name="order_month" domain="[]" context="{'group_by': 'date_order'}"/> -->
-				</xpath>
-			</field>
-		</record>
 
-		<!-- <record id="view_groupby_donhang" model="ir.ui.view">
-			<field name="name">Edited Product groupby donhang</field>
-			<field name="model">sale.order</field>
-			<field name="inherit_id" ref="sale.view_sales_order_filter" />
-			<field name="arch" type="xml">
-				
-				<xpath expr="//search/group/filter[@name='salesperson']" position="before">
-					<filter string="Đặt hàng" name="draft" domain="[('state','in',('draft', 'sent'))]"/>
-					<filter string="Đơn sản xuất" name="sales" domain="[('state','in',('sale','done'))]"/>
-					<separator/>
-					<filter string="Hoàn thành" name="state" domain="[('state', '=', 'done')]"/>
-					<filter string="Đã hủy" name="state" domain="[('state', '=', 'cancel')]"/>
-					<separator/>
-					<filter string="Ngày giao hàng" name="commitment_date"/>
-					
-				</xpath>
-				
-	
-			</field>
-		</record> -->
+
+
 	</data>
 </odoo>
