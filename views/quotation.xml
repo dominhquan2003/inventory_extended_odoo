@@ -15,10 +15,12 @@
 				<xpath expr="//form/sheet/group/group/field[@name='pricelist_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<xpath expr="//form/sheet/group/group/field[@name='show_update_pricelist']" position="attributes">
+				<xpath expr="//form/sheet/group/group/field[@name='show_update_pricelist']"
+					position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<xpath expr="//form/sheet/group/group/div[@groups='product.group_product_pricelist']" position="attributes">
+				<xpath expr="//form/sheet/group/group/div[@groups='product.group_product_pricelist']"
+					position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<div name="button_box" position="attributes">
@@ -86,6 +88,13 @@
 				</xpath>
 				<xpath expr="//field[@name='date_order']" position="attributes">
 					<attribute name="widget">date</attribute>
+					<!-- <attribute name="attrs">{'invisible': [('state', '=', 'draft')]}</attribute> -->
+				</xpath>
+				<xpath expr="(//label[@for='date_order']/parent::div)[1]" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="(//field[@name='date_order'])[1]" position="attributes">
+					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="//field[@name='date_order'][last()]" position="attributes">
 					<attribute name="widget">date</attribute>
@@ -137,8 +146,10 @@
 			<field name="inherit_id" ref="sale.view_sales_order_filter" />
 			<field name="arch" type="xml">
 				<xpath expr="//search/group" position="inside">
-					<filter string="Trạng thái đơn hàng" name="draft" domain="[]" context="{'group_by': 'state'}"/>
-					<filter string="Ngày giao hàng" name="commitment_date" context="{'group_by': 'commitment_date'}"/> 
+					<filter string="Trạng thái đơn hàng" name="draft" domain="[]"
+						context="{'group_by': 'state'}" />
+					<filter string="Ngày giao hàng" name="commitment_date"
+						context="{'group_by': 'commitment_date'}" />
 
 				</xpath>
 			</field>
@@ -150,9 +161,9 @@
 			<field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation" />
 			<field name="arch" type="xml">
 				<xpath expr="//filter[@name='draft']" position="before">
-					<filter string="Hoàn thành" name="state" domain="[('state', '=', 'done')]"/>
-					<filter string="Đã hủy" name="state" domain="[('state', '=', 'cancel')]"/>
-					<separator/>
+					<filter string="Hoàn thành" name="state" domain="[('state', '=', 'done')]" />
+					<filter string="Đã hủy" name="state" domain="[('state', '=', 'cancel')]" />
+					<separator />
 				</xpath>
 				<xpath expr="//filter[@name='my_quotation']" position="attributes">
 					<attribute name="string">Đơn hàng</attribute>
@@ -167,14 +178,12 @@
 					<attribute name="string">Ngày đặt hàng</attribute>
 				</xpath>
 				<xpath expr="//filter[@name='filter_create_date']" position="after">
-					<filter string="Ngày giao hàng" name="commitment_date"/>
+					<filter string="Ngày giao hàng" name="commitment_date" />
 				</xpath>
 
 
 			</field>
 		</record>
-
-
 
 
 	</data>
