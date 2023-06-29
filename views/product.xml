@@ -140,33 +140,7 @@
 
   </record>
 
-  <record id="view_filter_donhang" model="ir.ui.view">
-    <field name="name">Edited Product filter donhang</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation" />
-    <field name="arch" type="xml">
-      <xpath expr="//filter[@name='draft']" position="before">
-        <filter string="Hoàn thành" name="state" domain="[('state', '=', 'done')]"/>
-        <filter string="Đã hủy" name="state" domain="[('state', '=', 'cancel')]"/>
-        <separator/>
-      </xpath>
-       <xpath expr="//filter[@name='my_quotation']" position="attributes">
-        <attribute name="string">Đơn hàng</attribute>
-      </xpath>
-      <xpath expr="//filter[@name='draft']" position="attributes">
-        <attribute name="string">Đặt hàng</attribute>
-      </xpath>
-      <xpath expr="//filter[@name='sales']" position="attributes">
-        <attribute name="string">Đơn sản xuất</attribute>
-      </xpath>
-      <xpath expr="//filter[@name='filter_create_date']" position="attributes">
-        <attribute name="string">Ngày đặt hàng</attribute>
-      </xpath>
-      <xpath expr="//filter[@name='filter_create_date']" position="after">
-        <filter string="Ngày giao hàng" name="commitment_date"/>
-      </xpath>
-    </field>
-  </record>
+ 
 
 
 </odoo>
