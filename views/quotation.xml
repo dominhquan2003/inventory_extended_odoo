@@ -94,7 +94,16 @@
 					<attribute name="string">Ngày đặt hàng</attribute>
 				</xpath>
 
-
+				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']" position="attributes">
+					<attribute name="string">Đặt hàng</attribute>
+					<!-- <field name="qty_available" string="Đã SX"/>
+					<field name="virtual_available" string="Cần SX"/> -->
+				</xpath>
+				<!-- <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']" position="after">
+					<field name="order_line.qty_available" string="Đã SX" readonly="1"/>
+					<field name="order_line.virtual_available" string="Cần SX" readonly="1"/>
+				</xpath> -->
+				
 
 			</field>
 		</record>
@@ -136,7 +145,7 @@
 			<field name="arch" type="xml">
 				<xpath expr="//search/group" position="inside">
 					<filter string="Trạng thái đơn hàng" name="draft" domain="[]" context="{'group_by': 'state'}"/>
-					<filter string="Ngày giao hàng" name="commitment_date" context="{'group_by': 'commitment_date'}"/> 
+					<filter string="Ngày giao hàng" name="commitment_date" context="{'group_by': 'commitment_date'}"/>
 
 				</xpath>
 			</field>
@@ -165,7 +174,7 @@
 					<attribute name="string">Ngày đặt hàng</attribute>
 				</xpath>
 				<xpath expr="//filter[@name='filter_create_date']" position="after">
-					<filter string="Ngày giao hàng" name="commitment_date"/>
+					<filter string="Ngày giao hàng" name="commitment_date" date="commitment_date"/>
 				</xpath>
 
 
