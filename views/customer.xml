@@ -28,17 +28,17 @@
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="//field[@name='zip']" position="attributes">
-					<attribute name="invisible">1</attribute>
+					<attribute name="style">width:auto</attribute>
 				</xpath>
-				<xpath expr="//field[@name='state_id']" position="attributes">
+				<!-- <xpath expr="//field[@name='state_id']" position="attributes">
 					<attribute name="options">{'no_create': True}</attribute>
-				</xpath>
+				</xpath> -->
 				<xpath expr="//field[@name='lang']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<xpath expr="//field[@name='city']" position="attributes">
+				<!-- <xpath expr="//field[@name='city']" position="attributes">
 					<attribute name="invisible">1</attribute>
-				</xpath>
+				</xpath> -->
 				<xpath expr="//field[@name='website']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
@@ -48,9 +48,9 @@
 				<xpath expr="//field[@name='category_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<xpath expr="//field[@name='vat']" position="attributes">
+				<!-- <xpath expr="//field[@name='vat']" position="attributes">
 					<attribute name="invisible">1</attribute>
-				</xpath>
+				</xpath> -->
 				<xpath expr="//form/div[@class='alert alert-warning oe_edit_only']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
@@ -110,10 +110,6 @@
 			<field name="arch" type="xml">
 				<field name="email" position="attributes">
 					<attribute name="required">True</attribute>
-				</field>
-				<!-- adding tax field -->
-				<field name="website" position="before">
-					<field name="vat" />
 				</field>
 			</field>
 		</record>
