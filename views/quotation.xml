@@ -101,7 +101,7 @@
 				</xpath>
 				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']" position="after">
 					<field name="qty_available" string="Đã SX" readonly="1"/>
-					<!-- <field name="virtual_available" string="Cần SX" readonly="1"/> -->
+					<field name="virtual_available" string="Cần SX" readonly="1"/>
 				</xpath>
 				
 
