@@ -183,7 +183,7 @@
 		</record>
 
 		<!-- Bỏ group theo công ty-->
-		<record id="res_partner_view_search_filter" model="ir.ui.view">
+		<record id="res_partner_view_search_group" model="ir.ui.view">
 			<field name="name">res_partner view search filter</field>
 			<field name="model">res.partner</field>
 			<field name="inherit_id" ref="base.view_res_partner_filter" />

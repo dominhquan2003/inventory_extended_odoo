@@ -15,10 +15,12 @@
 				<xpath expr="//form/sheet/group/group/field[@name='pricelist_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<xpath expr="//form/sheet/group/group/field[@name='show_update_pricelist']" position="attributes">
+				<xpath expr="//form/sheet/group/group/field[@name='show_update_pricelist']"
+					position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<xpath expr="//form/sheet/group/group/div[@groups='product.group_product_pricelist']" position="attributes">
+				<xpath expr="//form/sheet/group/group/div[@groups='product.group_product_pricelist']"
+					position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<div name="button_box" position="attributes">
@@ -107,16 +109,21 @@
 					<field name="create_date" widget="date" />
 				</xpath>
 
-				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']" position="attributes">
+				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']"
+					position="attributes">
 					<attribute name="string">Đặt hàng</attribute>
 				</xpath>
-				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='qty_invoiced']" position="attributes">
+				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='qty_invoiced']"
+					position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
 
-				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='qty_delivered']" position="after">
-					<field name="qty_available" string="Đã SX"  attrs="{'invisible': [('state', '=', 'draft')]}"/>
-					<field name="virtual_available" string="Cần SX"  attrs="{'invisible': [('state', '=', 'draft')]}"/>
+				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='qty_delivered']"
+					position="after">
+					<field name="qty_available" string="Đã SX"
+						attrs="{'invisible': [('state', '=', 'draft')]}" />
+					<field name="virtual_available" string="Cần SX"
+						attrs="{'invisible': [('state', '=', 'draft')]}" />
 				</xpath>
 
 
@@ -127,7 +134,7 @@
 				</xpath>
 				<xpath expr="//button[@name='action_cancel']" position="attributes">
 					<attribute name="attrs">
-					  {'invisible': ['|', ('state', '!=', 'draft'), ('id', '=', False)]}
+						{'invisible': ['|', ('state', '!=', 'draft'), ('id', '=', False)]}
 					</attribute>
 				</xpath>
 			</field>
@@ -167,11 +174,19 @@
 			<field name="model">sale.order</field>
 			<field name="inherit_id" ref="sale.view_sales_order_filter" />
 			<field name="arch" type="xml">
+				<filter name="order_month" position="before">
+					<filter name="create_date" context="{'group_by': 'create_date'}" />
+				</filter>
 				<xpath expr="//search/group" position="inside">
-					<filter string="Trạng thái đơn hàng" name="draft" domain="[]" context="{'group_by': 'state'}"/>
-					<filter string="Ngày giao hàng" name="commitment_date" context="{'group_by': 'commitment_date'}"/>
-
+					<filter string="Ngày giao hàng" name="commitment_date"
+						context="{'group_by': 'commitment_date'}" />
 				</xpath>
+				<filter name="customer" position="after">
+					<separator />
+					<filter string="Trạng thái đơn hàng" name="draft" domain="[]"
+						context="{'group_by': 'state'}" />
+					<separator />
+				</filter>
 			</field>
 		</record>
 
@@ -180,13 +195,11 @@
 			<field name="model">sale.order</field>
 			<field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation" />
 			<field name="arch" type="xml">
-				<xpath expr="//filter[@name='draft']" position="before">
+				<xpath expr="//filter[@name='draft']" position="after">
+					<filter name="sales" position="move" />
 					<filter string="Hoàn thành" name="state" domain="[('state', '=', 'done')]" />
 					<filter string="Đã hủy" name="state" domain="[('state', '=', 'cancel')]" />
 					<separator />
-				</xpath>
-				<xpath expr="//filter[@name='my_quotation']" position="attributes">
-					<attribute name="string">Đơn hàng</attribute>
 				</xpath>
 				<xpath expr="//filter[@name='draft']" position="attributes">
 					<attribute name="string">Đặt hàng</attribute>
@@ -198,7 +211,7 @@
 					<attribute name="string">Ngày đặt hàng</attribute>
 				</xpath>
 				<xpath expr="//filter[@name='filter_create_date']" position="after">
-					<filter string="Ngày giao hàng" name="commitment_date" date="commitment_date"/>
+					<filter string="Ngày giao hàng" name="commitment_date" date="commitment_date" />
 				</xpath>
 
 

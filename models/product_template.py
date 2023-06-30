@@ -23,3 +23,9 @@ class Product(models.Model):
     def _compute_total(self):
         for product in self:
             product.total = product.qty_available * product.list_price
+
+    # @api.constrains('virtual_available')
+    # def _check_virtual_available(self):
+    #     for rec in self:
+    #         if rec.virtual_available < 0:
+    #             rec.virtual_available = 0    
