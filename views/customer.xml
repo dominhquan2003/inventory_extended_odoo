@@ -28,17 +28,17 @@
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="//field[@name='zip']" position="attributes">
-					<attribute name="invisible">1</attribute>
+					<attribute name="style">width:auto</attribute>
 				</xpath>
-				<xpath expr="//field[@name='state_id']" position="attributes">
+				<!-- <xpath expr="//field[@name='state_id']" position="attributes">
 					<attribute name="options">{'no_create': True}</attribute>
-				</xpath>
+				</xpath> -->
 				<xpath expr="//field[@name='lang']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<xpath expr="//field[@name='city']" position="attributes">
+				<!-- <xpath expr="//field[@name='city']" position="attributes">
 					<attribute name="invisible">1</attribute>
-				</xpath>
+				</xpath> -->
 				<xpath expr="//field[@name='website']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
@@ -48,9 +48,12 @@
 				<xpath expr="//field[@name='category_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<xpath expr="//field[@name='vat']" position="attributes">
+				<!-- <xpath expr="//field[@name='vat']" position="attributes">
 					<attribute name="invisible">1</attribute>
-				</xpath>
+				</xpath> -->
+				<!-- <xpath expr="//group[2]/field[6]" position="after">
+					<field name="vat" position="move"/>
+				</xpath> -->
 				<xpath expr="//form/div[@class='alert alert-warning oe_edit_only']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
@@ -82,7 +85,7 @@
 				</xpath>
 				<!-- adding label for name field -->
 				<field name="company_type" position="after">
-					<label for="company" string="Tên" />
+					<label for="company" string="Khách hàng" />
 				</field>
 				<!-- set default contact -->
 				<field name="child_ids" position="attributes">
@@ -111,9 +114,8 @@
 				<field name="email" position="attributes">
 					<attribute name="required">True</attribute>
 				</field>
-				<!-- adding tax field -->
-				<field name="website" position="before">
-					<field name="vat" />
+				<field name="website" position="after">
+					<field name="vat" position="move" />
 				</field>
 			</field>
 		</record>
@@ -181,7 +183,7 @@
 			<field name="inherit_id" ref="base.view_res_partner_filter" />
 			<field name="arch" type="xml">
 				<xpath expr="//search/group/filter[@name='group_company']" position="replace" />
-				
+
 			</field>
 		</record>
 	</data>
