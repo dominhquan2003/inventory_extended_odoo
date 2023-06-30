@@ -123,7 +123,11 @@
 						name="attrs">{'invisible': ['|', ('id', '=', False), ('state', 'not in', ['draft'])]}
 					</attribute>
 				</xpath>
-
+				<xpath expr="//button[@name='action_cancel']" position="attributes">
+					<attribute name="attrs">
+					  {'invisible': ['|', ('state', '!=', 'draft'), ('id', '=', False)]}
+					</attribute>
+				</xpath>
 			</field>
 		</record>
 
