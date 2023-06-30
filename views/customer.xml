@@ -51,6 +51,9 @@
 				<!-- <xpath expr="//field[@name='vat']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath> -->
+				<!-- <xpath expr="//group[2]/field[6]" position="after">
+					<field name="vat" position="move"/>
+				</xpath> -->
 				<xpath expr="//form/div[@class='alert alert-warning oe_edit_only']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
@@ -110,6 +113,9 @@
 			<field name="arch" type="xml">
 				<field name="email" position="attributes">
 					<attribute name="required">True</attribute>
+				</field>
+				<field name="website" position="after">
+					<field name="vat" position="move" />
 				</field>
 			</field>
 		</record>
@@ -177,7 +183,7 @@
 			<field name="inherit_id" ref="base.view_res_partner_filter" />
 			<field name="arch" type="xml">
 				<xpath expr="//search/group/filter[@name='group_company']" position="replace" />
-				
+
 			</field>
 		</record>
 	</data>
