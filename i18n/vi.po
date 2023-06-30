@@ -195,11 +195,6 @@ msgid "Quotation Date"
 msgstr "Ngày bắt đầu sản xuất"
 
 #. module: sale
-#. odoo-python
-#: code:addons/sale/models/sale_order.py:0
-#: code:addons/sale/models/sale_order.py:0
-#: code:addons/sale/models/sale_order.py:0
-#: code:addons/sale/models/sale_order.py:0
-#, python-format
-msgid "New"
-msgstr "Mới cmmmmmmmmmmmmm"
+#: model_terms:ir.ui.view,arch_db:sale.view_sales_order_auto_done_setting
+msgid "Lock"
+msgstr "Hoàn thành"
