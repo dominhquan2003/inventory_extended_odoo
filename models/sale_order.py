@@ -14,8 +14,8 @@ class SaleOrder(models.Model):
 
     def action_done(self):
         # Kiểm tra trạng thái giao hàng đã hoàn thành
-        # if self.state != 'done':
-        #     raise ValidationError('Giao hết hàng đã sản xuất')
+        if self.state != 'done':
+            raise ValidationError('Giao hết hàng đã sản xuất')
         for line in self.order_line :
             line.qty_delivered = line.qty_available
             line.product_uom_qty = line.qty_available
