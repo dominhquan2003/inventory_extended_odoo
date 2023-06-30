@@ -118,7 +118,11 @@
 					<field name="qty_available" string="Đã SX" readonly="1"/>
 					<!-- <field name="virtual_available" string="Cần SX" readonly="1"/> -->
 				</xpath>
-				
+				<xpath expr="(//button[@name='action_confirm'])[2]" position="attributes">
+					<attribute
+						name="attrs">{'invisible': ['|', ('id', '=', False), ('state', 'not in', ['draft'])]}
+					</attribute>
+				</xpath>
 
 			</field>
 		</record>
