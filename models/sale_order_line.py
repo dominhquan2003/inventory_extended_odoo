@@ -8,8 +8,8 @@ class SaleOrderLine(models.Model):
         "res.partner",
         related='order_id.partner_id',
     )
-    virtual_available = fields.Float(compute='_compute_virtual_available')
-    qty_available = fields.Float(compute='_compute_qty_available')
+    virtual_available = fields.Float(compute='_compute_virtual_available',store=True)
+    qty_available = fields.Float(compute='_compute_qty_available',store=True)
 
     @api.depends('product_id.product_tmpl_id.qty_available')
     def _compute_qty_available(self):

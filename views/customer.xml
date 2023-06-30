@@ -127,19 +127,6 @@
 				</field>
 			</field>
 		</record>
-		<!-- Bỏ filter trong khách hàng -->
-		<record id="res_partner_view_search_filter" model="ir.ui.view">
-			<field name="name">res_partner view search filter</field>
-			<field name="model">res.partner</field>
-			<field name="inherit_id" ref="account.res_partner_view_search" />
-			<field name="arch" type="xml">
-				<xpath expr="//filter[@name='customer']" position="replace" />
-				<xpath expr="//filter[@name='supplier']" position="replace" />
-				<xpath expr="//filter[@name='type_person']" position="replace" />
-				<xpath expr="//filter[@name='inactive']" position="replace" />
-				<xpath expr="//filter[@name='type_company']" position="replace" />
-			</field>
-		</record>
 
 
 		<record id="view_partner_tree_1" model="ir.ui.view">
@@ -172,6 +159,30 @@
 		<record id="account.res_partner_action_customer"
 			model="ir.actions.act_window">
 			<field name="domain">[('customer_rank', '&gt;', 0)]</field>
+		</record>
+		<!-- Bỏ filter trong khách hàng -->
+		<record id="res_partner_view_search_filter" model="ir.ui.view">
+			<field name="name">res_partner view search filter</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="account.res_partner_view_search" />
+			<field name="arch" type="xml">
+				<xpath expr="//filter[@name='customer']" position="replace" />
+				<xpath expr="//filter[@name='supplier']" position="replace" />
+				<xpath expr="//filter[@name='type_person']" position="replace" />
+				<xpath expr="//filter[@name='inactive']" position="replace" />
+				<xpath expr="//filter[@name='type_company']" position="replace" />
+			</field>
+		</record>
+
+		<!-- Bỏ group theo công ty-->
+		<record id="res_partner_view_search_filter" model="ir.ui.view">
+			<field name="name">res_partner view search filter</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_res_partner_filter" />
+			<field name="arch" type="xml">
+				<xpath expr="//search/group/filter[@name='group_company']" position="replace" />
+				
+			</field>
 		</record>
 	</data>
 </odoo>
