@@ -63,16 +63,6 @@ msgstr "SL hiện có"
 msgid "Customer"
 msgstr "Khách hàng"
 
-#. module: stock
-#. odoo-python
-#: code:addons/stock/models/product.py:0
-#: model:ir.model.fields,field_description:stock.field_product_product__virtual_available
-#: model:ir.model.fields,field_description:stock.field_product_template__virtual_available
-#: model:ir.model.fields,field_description:stock.field_stock_move__availability
-#: model_terms:ir.ui.view,arch_db:stock.view_stock_product_tree
-#, python-format
-msgid "Forecasted Quantity"
-msgstr "SL cần SX"
 
 #. module: sale
 #: model:ir.model.fields.selection,name:sale.selection__sale_order__state__done
