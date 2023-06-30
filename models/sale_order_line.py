@@ -1,9 +1,9 @@
 from odoo import models, fields, api  # type:ignore
-
+from odoo.exceptions import ValidationError  # type:ignore
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
-
+    # order_id = fields.Many2one('sale.order', string='Sale Order', related='order_id', readonly=True)
     partner_id_test = fields.Many2one(
         "res.partner",
         related='order_id.partner_id',
@@ -20,6 +20,9 @@ class SaleOrderLine(models.Model):
     def _compute_virtual_available(self):
         for line in self:
             line.virtual_available = line.product_id.product_tmpl_id.virtual_available
+    
+
+   
 
     
 
