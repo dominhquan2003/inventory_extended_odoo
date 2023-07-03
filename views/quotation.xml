@@ -5,9 +5,7 @@
 			<field name="model">sale.order</field>
 			<field name="inherit_id" ref="sale.view_order_form" />
 			<field name="arch" type="xml">
-				<xpath expr="//tree/field[@name='qty_delivered']" position="attributes">
-					<attribute name="attrs">{'readonly': False}</attribute>
-				</xpath>
+				
 				<xpath expr="//form/sheet/group/group/label[@for='pricelist_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
