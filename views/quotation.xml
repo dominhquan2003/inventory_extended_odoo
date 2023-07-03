@@ -22,9 +22,9 @@
 					position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
-				<div name="button_box" position="attributes">
+				<!-- <div name="button_box" position="attributes">
 					<attribute name="invisible">1</attribute>
-				</div>
+				</div> -->
 				<xpath expr="//field[@name='payment_term_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
