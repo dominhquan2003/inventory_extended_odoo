@@ -8,7 +8,7 @@ class Product(models.Model):
     customer_id = fields.Many2one(
         "res.partner",
         required=True,
-        domain=[('customer_rank', '>', 0)]
+        domain=[('customer_rank', '>', 0),('is_company', '=', True)]
     )
     detailed_type = fields.Selection(
         default='product',
