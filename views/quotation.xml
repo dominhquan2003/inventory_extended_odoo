@@ -8,7 +8,6 @@
 				<xpath expr="//tree/field[@name='qty_delivered']" position="attributes">
 					<attribute name="attrs">{'readonly': False}</attribute>
 				</xpath>
-
 				<xpath expr="//form/sheet/group/group/label[@for='pricelist_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
@@ -88,7 +87,7 @@
 				</xpath>
 				<xpath expr="//field[@name='date_order']" position="attributes">
 					<attribute name="widget">date</attribute>
-					<!-- <attribute name="attrs">{'invisible': [('state', '=', 'draft')]}</attribute> -->
+					<!-- <attribute name="attrs">{'invisible': [('state', '=', 'cancel')]}</attribute> -->
 				</xpath>
 				<xpath expr="(//label[@for='date_order']/parent::div)[1]" position="attributes">
 					<attribute name="invisible">1</attribute>
@@ -96,8 +95,12 @@
 				<xpath expr="(//field[@name='date_order'])[1]" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
+				<xpath expr="(//label[@for='date_order']/parent::div)[2]" position="attributes">
+					<attribute name="attrs">{'invisible': [('state', '=', 'cancel')]}</attribute>
+				</xpath>
 				<xpath expr="//field[@name='date_order'][last()]" position="attributes">
 					<attribute name="widget">date</attribute>
+					<attribute name="attrs">{'invisible': [('state', '=', 'cancel')]}</attribute>
 				</xpath>
 				<xpath expr="//field[@name='date_order']" position="after">
 					<field name="commitment_date" />
@@ -125,8 +128,6 @@
 					<field name="virtual_available" string="Cần SX"
 						attrs="{'invisible': [('state', '=', 'draft')]}" />
 				</xpath>
-
-
 				<xpath expr="(//button[@name='action_confirm'])[2]" position="attributes">
 					<attribute
 						name="attrs">{'invisible': ['|', ('id', '=', False), ('state', 'not in', ['draft'])]}
@@ -137,6 +138,8 @@
 						{'invisible': ['|', ('state', '!=', 'draft'), ('id', '=', False)]}
 					</attribute>
 				</xpath>
+				<create name="add_section_control" position="replace" />
+				<create name="add_note_control" position="replace" />
 			</field>
 		</record>
 
@@ -231,7 +234,9 @@
 				<xpath expr="//filter[@name='filter_create_date']" position="after">
 					<filter string="Ngày giao hàng" name="commitment_date" date="commitment_date" />
 				</xpath>
-
+				<xpath expr="//filter[@name='my_quotation']" position="attributes">
+					<attribute name="string">Đơn hàng của tôi</attribute>
+				</xpath>
 
 			</field>
 		</record>
