@@ -1,5 +1,5 @@
 from odoo import models, fields, api, _  # type:ignore
-from odoo.exceptions import ValidationError  # type:ignore
+from odoo.exceptions import ValidationError, UserError  # type:ignore
 
 
 class SaleOrder(models.Model):
@@ -12,14 +12,14 @@ class SaleOrder(models.Model):
     # order_line_ids = fields.One2many(
     #     'sale.order.line', 'order_id', string='Sale Order Lines')
 
-    def action_done(self):
-        # Kiểm tra trạng thái giao hàng đã hoàn thành
-        if self.state != 'done':
-            raise ValidationError('Giao hết hàng đã sản xuất')
-        for line in self.order_line :
-            line.qty_delivered = line.qty_available
-            line.product_uom_qty = line.qty_available
-            # line.qty_available = 0
+    # def action_done(self):
+    #     # Kiểm tra trạng thái giao hàng đã hoàn thành
+    #     # if self.state != 'done':
+    #     #     raise ValidationError('Giao hết hàng đã sản xuất')
+    #     for line in self.order_line :
+    #         line.qty_delivered = line.qty_available
+    #         line.product_uom_qty = line.qty_available
+    #         # line.qty_available = 0
 
     def action_confirm(self):
         """ Confirm the given quotation(s) and set their confirmation date.

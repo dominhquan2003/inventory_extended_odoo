@@ -8,7 +8,7 @@ class Product(models.Model):
     customer_id = fields.Many2one(
         "res.partner",
         required=True,
-        domain=[('customer_rank', '>', 0)]
+        domain=[('customer_rank', '>', 0),('is_company', '=', True)]
     )
     detailed_type = fields.Selection(
         default='product',
@@ -23,3 +23,10 @@ class Product(models.Model):
     def _compute_total(self):
         for product in self:
             product.total = product.qty_available * product.list_price
+
+    def _compute_quantities(self):
+        super()._compute_quantities()  # Call the original compute method
+
+        for record in self:
+            if record.virtual_available > 0:
+                record.virtual_available = 0

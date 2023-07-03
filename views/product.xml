@@ -25,7 +25,7 @@
         <group>
           <field name="customer_id" class="oe_inline" string="Khách hàng"
             style="width: 50%!important;" options="{'no_create': True}" />
-          <field name="name" class="oe_inline" string="Mã hàng" />
+          <field name="name" optional="show" class="oe_inline" string="Mã hàng" />
           <field name="list_price" class="oe_inline" widget='monetary'
             options="{'currency_field': 'currency_id', 'field_digits': True}" />
         </group>
@@ -61,7 +61,7 @@
       <field name="default_code" position="attributes">
         <attribute name="invisible">1</attribute>
       </field>
-      <field name="name" position="after">
+      <field name="name" position="before">
         <field name="customer_id" string="Khách hàng" />
       </field>
       <field name="product_tag_ids" position="attributes">
@@ -85,7 +85,8 @@
 
 
       <field name="virtual_available" position="after">
-        <field name="total" widget="monetary" width="80" options="{'currency_field': 'currency_id'}" />
+        <field name="total" optional="show" widget="monetary" width="80"
+          options="{'currency_field': 'currency_id'}" string="Tổng trị giá" />
         <!-- Để thấy được đơn vị tiền tệ phải có field này và ẩn nó đi -->
         <field name="currency_id" invisible="1" />
       </field>
@@ -108,6 +109,7 @@
 
       <xpath expr="//field[@name='responsible_id']" position="attributes">
         <attribute name="string">NV sales</attribute>
+        <attribute name="optional">show</attribute>
       </xpath>
       <xpath expr="//field[@name='qty_available']" position="attributes">
         <attribute name="string">Đã sản xuất</attribute>
@@ -135,12 +137,21 @@
       <xpath expr='//filter[@name="services"]' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-
+      <xpath expr='//filter[@name="consumable"]' position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr='//filter[@name="type"]' position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr='//filter[@name="categ_id"]' position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr='//filter[@name="categ_id"]' position="after">
+        <filter string="Khách hàng" name="customer" context="{'group_by':'customer_id'}" />
+      </xpath>
     </field>
 
   </record>
-
- 
 
 
 </odoo>
