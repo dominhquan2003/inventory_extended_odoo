@@ -1,6 +1,7 @@
 from odoo import models, fields, api  # type:ignore
 from odoo.exceptions import ValidationError  # type:ignore
 
+
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     # order_id = fields.Many2one('sale.order', string='Sale Order', related='order_id', readonly=True)
@@ -8,23 +9,7 @@ class SaleOrderLine(models.Model):
         "res.partner",
         related='order_id.partner_id',
     )
-    virtual_available = fields.Float(compute='_compute_virtual_available',store=True)
-    qty_available = fields.Float(compute='_compute_qty_available',store=True)
-
-    @api.depends('product_id.product_tmpl_id.qty_available')
-    def _compute_qty_available(self):
-        for line in self:
-            line.qty_available = line.product_id.product_tmpl_id.qty_available
-
-    @api.depends('product_id.product_tmpl_id.virtual_available')
-    def _compute_virtual_available(self):
-        for line in self:
-            line.virtual_available = line.product_id.product_tmpl_id.virtual_available
-    
-
-   
+    virtual_available = fields.Float(related="product_template_id.virtual_available")
+    qty_available = fields.Float(related="product_template_id.qty_available")
 
     
-
-
-
