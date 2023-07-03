@@ -166,7 +166,7 @@
 		<!-- Adding domain to action -->
 		<record id="account.res_partner_action_customer"
 			model="ir.actions.act_window">
-			<field name="domain">[('customer_rank', '&gt;', 0)]</field>
+			<field name="domain">[('customer_rank', '&gt;', 0),('is_company', '=', True)]</field>
 		</record>
 		<!-- Bỏ filter trong khách hàng -->
 		<record id="res_partner_view_search_filter" model="ir.ui.view">
