@@ -56,3 +56,17 @@ class SaleOrder(models.Model):
         #     self.action_done()
 
         return True
+    
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if 'company_id' in vals:
+                self = self.with_company(vals['company_id'])
+            if vals.get('name', _("Đơn hàng mới")) == _("Đơn hàng mới"):
+                seq_date = fields.Datetime.context_timestamp(
+                    self, fields.Datetime.to_datetime(vals['date_order'])
+                ) if 'date_order' in vals else None
+                vals['name'] = self.env['ir.sequence'].next_by_code(
+                    'sale.order', sequence_date=seq_date) or _("Đơn hàng mới")
+
+        return super().create(vals_list)
