@@ -190,6 +190,13 @@
 				<field name="invoice_status" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</field>
+				<field name="commitment_date" position="after">
+					<field name="amount_total" position="move"/>
+					<field name="state" position="move"/>
+				</field>
+				<field name="activity_ids" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field>
 			</field>
 		</record>
 
