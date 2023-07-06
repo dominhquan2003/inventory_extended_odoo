@@ -6,9 +6,10 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     name = fields.Char(
-        default=lambda self: _('Đơn hàng mới'))
+        required = False,
+        default = lambda self: _('Đơn hàng mới'))
     create_date = fields.Datetime(
-        default=lambda self: fields.Datetime.now())
+        default = lambda self: fields.Datetime.now())
     # order_line_ids = fields.One2many(
     #     'sale.order.line', 'order_id', string='Sale Order Lines')
 
@@ -62,7 +63,7 @@ class SaleOrder(models.Model):
         for vals in vals_list:
             if 'company_id' in vals:
                 self = self.with_company(vals['company_id'])
-            if vals.get('name', _("Đơn hàng mới")) == _("Đơn hàng mới"):
+            if not vals.get('name') or vals.get('name') == _("Đơn hàng mới"):
                 seq_date = fields.Datetime.context_timestamp(
                     self, fields.Datetime.to_datetime(vals['date_order'])
                 ) if 'date_order' in vals else None
