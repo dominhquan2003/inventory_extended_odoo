@@ -86,7 +86,7 @@
 
       <field name="virtual_available" position="after">
         <field name="total" optional="show" widget="monetary" width="80"
-          options="{'currency_field': 'currency_id'}" string="Tổng trị giá" />
+          options="{'currency_field': 'currency_id'}" string="Trị giá" />
         <!-- Để thấy được đơn vị tiền tệ phải có field này và ẩn nó đi -->
         <field name="currency_id" invisible="1" />
       </field>
@@ -98,6 +98,16 @@
       <xpath expr="//field[@name='outgoing_qty']" position="attributes">
         <attribute name="string">Đặt hàng</attribute>
       </xpath>
+      <xpath expr="//field[@name='name']" position="after">
+        <field name="list_price" position="move" />
+        <field name="outgoing_qty" position="move" />
+        <field name="qty_available" position="move" />
+        <field name="virtual_available" position="move" />
+        <field name="total" position="move" />
+      </xpath>
+      <xpath expr="//field[@name='company_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
 
     </field>
   </record>
@@ -108,14 +118,14 @@
     <field name="arch" type="xml">
 
       <xpath expr="//field[@name='responsible_id']" position="attributes">
-        <attribute name="string">NV sales</attribute>
+        <attribute name="string">NV KD</attribute>
         <attribute name="optional">show</attribute>
       </xpath>
       <xpath expr="//field[@name='qty_available']" position="attributes">
-        <attribute name="string">Đã sản xuất</attribute>
+        <attribute name="string">Đã SX</attribute>
       </xpath>
       <xpath expr="//field[@name='virtual_available']" position="attributes">
-        <attribute name="string">Cần sản xuất</attribute>
+        <attribute name="string">Cần SX</attribute>
       </xpath>
 
 
@@ -131,7 +141,7 @@
       <xpath expr="//filter[@name='filter_to_purchase']" position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-     
+
       <xpath expr='//filter[@name="services"]' position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
