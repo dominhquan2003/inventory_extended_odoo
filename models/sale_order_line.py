@@ -9,7 +9,13 @@ class SaleOrderLine(models.Model):
         "res.partner",
         related='order_id.partner_id',
     )
-    virtual_available = fields.Float(related="product_template_id.virtual_available")
+    virtual_available = fields.Float(
+        related="product_template_id.virtual_available")
     qty_available = fields.Float(related="product_template_id.qty_available")
 
-    
+    def name_get(self):
+        result = []
+        for so_line in self:
+            name = so_line.product_id.name
+            result.append((so_line.id, name))
+        return result
