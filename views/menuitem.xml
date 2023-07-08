@@ -41,9 +41,9 @@
 		<record id="account.menu_finance" model="ir.ui.menu">
 			<field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]" />
 		</record>
-		<record id="hr.menu_hr_root" model="ir.ui.menu">
-			<field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_user')])]" />
-		</record>
+		<!-- <record id="hr.menu_hr_root" model="ir.ui.menu">
+			<field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]" />
+		</record> -->
 		<record id="stock.menu_stock_root" model="ir.ui.menu">
 			<field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]" />
 		</record>
@@ -55,8 +55,8 @@
 			<field name="groups_id" eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" />
 		</record>
 		<!-- NV kho -->
-		<record id="timekeeping_app.menu_timekeeping_table" model="ir.ui.menu">
+		<!-- <record id="timekeeping_app.menu_timekeeping_table" model="ir.ui.menu">
 			<field name="groups_id" eval="[(6, 0, [ref('timekeeping_app.timekeeping_group_manager')])]" />
-		</record>
+		</record> -->
 	</data>
 </odoo>
