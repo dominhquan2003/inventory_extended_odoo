@@ -27,7 +27,7 @@
             style="width: 50%!important;" options="{'no_create': True}" />
           <field name="name" optional="show" class="oe_inline" string="Mã hàng" />
           <field name="list_price" class="oe_inline" widget='monetary'
-            options="{'currency_field': 'currency_id', 'field_digits': True}" />
+            options="{'currency_field': 'currency_id'}" />
         </group>
       </xpath>
       <xpath expr='//form/sheet/field[@name="image_1920"]' position="before">
