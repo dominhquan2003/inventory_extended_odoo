@@ -19,6 +19,10 @@ class Product(models.Model):
         'res.currency',
         default=lambda self: self.env.company.currency_id.id)
     
+    _sql_constraints = [
+        ('unique_name', 'UNIQUE (name)', 'Trùng tên mã hàng.')
+    ]
+    
     @api.depends('qty_available', 'list_price')
     def _compute_total(self):
         for product in self:
