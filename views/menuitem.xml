@@ -52,7 +52,11 @@
 		</record>
 		<!-- NV bán hàng -->
 		<record id="sale.sale_menu_root" model="ir.ui.menu">
-			<field name="groups_id" eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" />
+			<field name="groups_id" eval="[(6, 0, 
+			[ref('sales_team.group_sale_manager'),
+			ref('sales_team.group_sale_salesman_all_leads'),
+			ref('sales_team.group_sale_salesman')]
+			)]" />
 		</record>
 		<!-- NV kho -->
 		<!-- <record id="timekeeping_app.menu_timekeeping_table" model="ir.ui.menu">

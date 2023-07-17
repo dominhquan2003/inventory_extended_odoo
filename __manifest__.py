@@ -18,7 +18,7 @@
     # for the full list
     'category': 'Sales',
     'version': '0.1',
-    'application': True,
+    'application': False,
 
     # any module necessary for this one to work correctly
     'depends': ['sale_management', 'stock'],#, 'base','timekeeping_app'
