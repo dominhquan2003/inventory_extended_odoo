@@ -71,3 +71,7 @@ class SaleOrder(models.Model):
                     'sale.order', sequence_date=seq_date) or _("Đơn hàng mới")
 
         return super().create(vals_list)
+    
+    _sql_constraints = [
+        ('unique_name', 'UNIQUE (name)', 'Trùng tên đơn hàng.')
+    ]
