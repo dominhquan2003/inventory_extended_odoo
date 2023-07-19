@@ -69,5 +69,14 @@ class SaleOrder(models.Model):
                 ) if 'date_order' in vals else None
                 vals['name'] = self.env['ir.sequence'].next_by_code(
                     'sale.order', sequence_date=seq_date) or _("Đơn hàng mới")
+            else:
+                prefix = self.env['ir.sequence'].search([
+                    ('code', '=', 'sale.order')
+                ]).prefix
+                vals['name'] = prefix + " " + vals['name']
 
         return super().create(vals_list)
+    
+    _sql_constraints = [
+        ('unique_name', 'UNIQUE (name)', 'Trùng tên đơn hàng.')
+    ]
