@@ -90,7 +90,6 @@
 				</xpath>
 				<xpath expr="//field[@name='date_order']" position="attributes">
 					<attribute name="widget">date</attribute>
-					<!-- <attribute name="attrs">{'invisible': [('state', '=', 'cancel')]}</attribute> -->
 				</xpath>
 				<xpath expr="(//label[@for='date_order']/parent::div)[1]" position="attributes">
 					<attribute name="invisible">1</attribute>
@@ -99,11 +98,17 @@
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="(//label[@for='date_order']/parent::div)[2]" position="attributes">
-					<attribute name="attrs">{'invisible': [('state', 'in', ['draft', 'cancel', 'sent'])]}</attribute>
+					<attribute name="attrs">
+						{'invisible': [('state', 'in', ['draft', 'cancel', 'sent'])], 'readonly': False}
+					</attribute>
+					<attribute name="readonly">False</attribute>
 				</xpath>
 				<xpath expr="//field[@name='date_order'][last()]" position="attributes">
 					<attribute name="widget">date</attribute>
-					<attribute name="attrs">{'invisible': [('state', 'in', ['draft', 'cancel', 'sent'])]}</attribute>
+					<attribute name="attrs">
+						{'invisible': [('state', 'in', ['draft', 'cancel', 'sent'])], 'readonly': False}
+					</attribute>
+					<attribute name="readonly">False</attribute>
 				</xpath>
 				<xpath expr="//field[@name='date_order']" position="after">
 					<field name="commitment_date" />
@@ -112,7 +117,7 @@
 					<attribute name="widget">date</attribute>
 				</xpath>
 				<xpath expr="//field[@name='validity_date']" position="before">
-					<field name="create_date" widget="date" />
+					<field name="create_date" widget="date" readonly='False' />
 				</xpath>
 
 				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']"
@@ -126,7 +131,7 @@
 
 				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='qty_delivered']"
 					position="after">
-					<field name="qty_available" string="Đã SX"
+					<field name="qty_available" string="Tồn kho"
 						attrs="{'invisible': [('state', '=', 'draft')]}" />
 					<field name="virtual_available" string="Cần SX"
 						attrs="{'invisible': [('state', '=', 'draft')]}" />
@@ -191,8 +196,8 @@
 					<attribute name="invisible">1</attribute>
 				</field>
 				<field name="commitment_date" position="after">
-					<field name="amount_total" position="move"/>
-					<field name="state" position="move"/>
+					<field name="amount_total" position="move" />
+					<field name="state" position="move" />
 				</field>
 				<field name="activity_ids" position="attributes">
 					<attribute name="invisible">1</attribute>
