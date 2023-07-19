@@ -60,6 +60,7 @@
 				</field>
 				<field name="product_template_id" position="attributes">
 					<attribute name="domain">[('customer_id', '=', partner_id_test)]</attribute>
+					<attribute name="options">{'no_create': True}</attribute>
 				</field>
 				<button id="create_invoice_percentage" position="attributes">
 					<attribute name="invisible">1</attribute>
