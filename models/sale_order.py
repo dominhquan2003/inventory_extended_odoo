@@ -8,20 +8,9 @@ class SaleOrder(models.Model):
     name = fields.Char(
         required = False,
         default = lambda self: _('Đơn hàng mới'))
-    create_date = fields.Datetime(
-        default = lambda self: fields.Datetime.now())
-    # order_line_ids = fields.One2many(
-    #     'sale.order.line', 'order_id', string='Sale Order Lines')
-
-    # def action_done(self):
-    #     # Kiểm tra trạng thái giao hàng đã hoàn thành
-    #     # if self.state != 'done':
-    #     #     raise ValidationError('Giao hết hàng đã sản xuất')
-    #     for line in self.order_line :
-    #         line.qty_delivered = line.qty_available
-    #         line.product_uom_qty = line.qty_available
-    #         # line.qty_available = 0
-
+    # create_date = fields.Datetime(
+    #     default = lambda self: fields.Datetime.now())
+   
     def action_confirm(self):
         """ Confirm the given quotation(s) and set their confirmation date.
 
