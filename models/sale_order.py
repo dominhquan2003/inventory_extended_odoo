@@ -7,9 +7,12 @@ class SaleOrder(models.Model):
 
     name = fields.Char(
         required = False,
-        default = lambda self: _('Đơn hàng mới'))
-    # create_date = fields.Datetime(
-    #     default = lambda self: fields.Datetime.now())
+        default = lambda self: _('Đơn hàng mới')
+        )
+    create_order_date = fields.Date(
+        string="Đặt hàng",
+        default = lambda self: fields.Date.today()
+        )
    
     def action_confirm(self):
         """ Confirm the given quotation(s) and set their confirmation date.

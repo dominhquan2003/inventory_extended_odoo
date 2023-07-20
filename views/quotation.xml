@@ -119,7 +119,7 @@
 					<attribute name="widget">date</attribute>
 				</xpath>
 				<xpath expr="//field[@name='validity_date']" position="before">
-					<field name="create_date" widget="date" readonly='False' />
+					<field name="create_order_date" readonly='False' />
 				</xpath>
 
 				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']"
@@ -170,8 +170,12 @@
 			<field name="model">sale.order</field>
 			<field name="inherit_id" ref="sale.view_quotation_tree" />
 			<field name="arch" type="xml">
-				<field name="create_date" position="after">
+				<field name="name" position="after">
+					<field name="create_order_date" optional="show" />
 					<field name="date_order" widget="date" optional="show" />
+				</field>
+				<field name="create_date" position="attributes">
+					<attribute name="invisible">1</attribute>
 				</field>
 				<field name="company_id" position="attributes">
 					<attribute name="invisible">1</attribute>
