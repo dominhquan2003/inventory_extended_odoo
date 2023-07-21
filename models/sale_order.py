@@ -6,21 +6,31 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     name = fields.Char(
-        required = False,
-        default = lambda self: _('Đơn hàng mới'))
-    create_date = fields.Datetime(
-        default = lambda self: fields.Datetime.now())
-    # order_line_ids = fields.One2many(
-    #     'sale.order.line', 'order_id', string='Sale Order Lines')
-
-    # def action_done(self):
-    #     # Kiểm tra trạng thái giao hàng đã hoàn thành
-    #     # if self.state != 'done':
-    #     #     raise ValidationError('Giao hết hàng đã sản xuất')
-    #     for line in self.order_line :
-    #         line.qty_delivered = line.qty_available
-    #         line.product_uom_qty = line.qty_available
-    #         # line.qty_available = 0
+        required=False,
+        default=lambda self: _('Đơn hàng mới')
+    )
+    create_order_date = fields.Date(
+        string="Đặt hàng",
+        default=lambda self: fields.Date.today()
+    )
+    vnd_rate = fields.Float(
+        string="Tỷ giá",
+        readonly="True",
+        default=lambda self: (
+            self.env["res.currency"].search(
+                [("name", "=", "VND")]).rate_ids.company_rate
+        )
+    )
+    vnd_total = fields.Integer(
+        string="Trị giá(VND)",
+        compute='_compute_vnd_total'
+    )
+    currency_id_1 = fields.Many2one(
+        'res.currency',
+        default=lambda self: (
+            self.env.ref('base.VND').id
+        )
+    )
 
     def action_confirm(self):
         """ Confirm the given quotation(s) and set their confirmation date.
@@ -57,7 +67,7 @@ class SaleOrder(models.Model):
         #     self.action_done()
 
         return True
-    
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
@@ -76,7 +86,12 @@ class SaleOrder(models.Model):
                 vals['name'] = prefix + " " + vals['name']
 
         return super().create(vals_list)
-    
+
     _sql_constraints = [
         ('unique_name', 'UNIQUE (name)', 'Trùng tên đơn hàng.')
     ]
+
+    @api.depends('vnd_rate')
+    def _compute_vnd_total(self):
+        for rc in self:
+            rc.vnd_total = rc.vnd_rate * rc.amount_total
