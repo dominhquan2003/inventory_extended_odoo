@@ -149,7 +149,7 @@ msgstr "Đơn hàng"
 #: model_terms:ir.ui.view,arch_db:sale.portal_my_quotations
 #: model_terms:ir.ui.view,arch_db:sale.view_order_line_tree
 msgid "Total"
-msgstr "Trị giá"
+msgstr "Trị giá(USD)"
 
 #. module: sale
 #. odoo-python

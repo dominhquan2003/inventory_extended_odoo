@@ -54,6 +54,9 @@
 					</attribute>
 					<attribute name="options">{'no_create': True}</attribute>
 				</field>
+				<field name="partner_id" position="after">
+					<field name="vnd_rate" />
+				</field>
 				<!-- filter products base on customer -->
 				<field name="product_template_id" position="after">
 					<field name="partner_id_test" invisible="1" />
@@ -203,6 +206,10 @@
 				</field>
 				<field name="commitment_date" position="after">
 					<field name="amount_total" position="move" />
+					<field name="vnd_rate" />
+					<field name="currency_id_1" invisible="1"/>
+					<field name="vnd_total" widget="monetary"
+						options="{'currency_field': 'currency_id_1'}" sum="Tổng vnđ" />
 					<field name="state" position="move" />
 				</field>
 				<field name="activity_ids" position="attributes">
