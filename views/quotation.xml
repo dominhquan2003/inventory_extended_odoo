@@ -159,6 +159,11 @@
 				</xpath>
 				<create name="add_section_control" position="replace" />
 				<create name="add_note_control" position="replace" />
+				<xpath expr="//field[@name='tax_totals']" position="after">
+					<field name="currency_id_1" invisible="1" />
+					<field name="vnd_total" widget="monetary" string="Vnd"
+						options="{'currency_field': 'currency_id_1'}" />
+				</xpath>
 			</field>
 		</record>
 

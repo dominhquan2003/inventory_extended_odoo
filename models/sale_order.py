@@ -23,7 +23,7 @@ class SaleOrder(models.Model):
         readonly="True",
         default=lambda self: (
             self.env["res.currency"].search(
-                [("name", "=", "VND")]).rate_ids.company_rate
+                [("name", "=", "VND")]).rate_ids[0].company_rate
         )
     )
     vnd_total = fields.Integer(
