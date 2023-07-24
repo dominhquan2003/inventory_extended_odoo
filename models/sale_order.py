@@ -6,13 +6,13 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     ma_dh = fields.Char(
-        string = 'Mã ĐH',
-        compute = '_compute_ma_dh'
+        string='Mã ĐH',
+        compute='_compute_ma_dh'
     )
     name = fields.Char(
-        string = "Tên ĐH",
-        required = True,
-        default = ""
+        string="Tên ĐH",
+        required=True,
+        default=""
     )
     create_order_date = fields.Date(
         string="Đặt hàng",
@@ -21,10 +21,7 @@ class SaleOrder(models.Model):
     vnd_rate = fields.Float(
         string="Tỷ giá",
         readonly="True",
-        default=lambda self: (
-            self.env["res.currency"].search(
-                [("name", "=", "VND")]).rate_ids[0].company_rate
-        )
+        compute="compute_vnd_rate"
     )
     vnd_total = fields.Integer(
         string="Trị giá(VND)",
@@ -106,3 +103,8 @@ class SaleOrder(models.Model):
         for rc in self:
             if rc.id:
                 rc.ma_dh = "{:05d}".format(rc.id)
+
+    def compute_vnd_rate(self):
+        rate = self.env["res.currency"].search([("name", "=", "VND")]).rate_ids
+        if rate:
+            self.vnd_rate = rate[0].company_rate
