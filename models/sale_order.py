@@ -30,12 +30,6 @@ class SaleOrder(models.Model):
         string="Trị giá(VND)",
         compute='_compute_vnd_total'
     )
-    currency_id = fields.Many2one(
-        'res.currency',
-        default=lambda self: (
-            self.env.ref('base.USD').id
-        )
-    )
     currency_id_1 = fields.Many2one(
         'res.currency',
         default=lambda self: (
