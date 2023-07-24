@@ -14,11 +14,24 @@
 			<field name="parent_id" ref="sale.sale_menu_root" />
 			<field name="sequence">3</field>
 		</record>
-		<record id="account.menu_action_currency_form" model="ir.ui.menu">
-			<field name="parent_id" ref="sale.sale_menu_root" />
-			<field name="sequence">4</field>
+		<!-- action -->
+		<record
+			id="action_currencies_vnd" model="ir.actions.act_window">
+			<field name="res_model">res.currency</field>
+			<field name="view_mode">form</field>
+			<field name="res_id" ref="base.VND" />
 		</record>
-
+		<!-- menu -->
+		<menuitem id="menu_newsale_config"
+			name="Cấu hình"
+			parent="sale.sale_menu_root"
+			sequence="4"
+		/>
+		<menuitem id="menu_newsale_currency_rate"
+			name="Tiền tệ"
+			parent="menu_newsale_config"
+			action="action_currencies_vnd"	
+		/>
 		<!-- Ẩn menu không cần -->
 		<record id="sale.sale_order_menu" model="ir.ui.menu">
 			<field name="active">False</field>
