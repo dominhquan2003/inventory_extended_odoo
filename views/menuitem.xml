@@ -17,7 +17,7 @@
 		<!-- action -->
 		<record
 			id="action_currencies_vnd" model="ir.actions.act_window">
-			<field name="name">Currency Rate</field>
+			<field name="name">Tỷ giá VND/USD</field>
 			<field name="res_model">res.currency.rate</field>
 			<field name="view_mode">tree,form</field>
 			<!-- <field name="view_ids"
