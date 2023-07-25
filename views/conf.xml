@@ -8,7 +8,8 @@
         <sheet position="replace">
           <sheet>
             <group>
-              <field name="company_rate" digits="[12,12]" attrs="{'readonly': [('id', '!=', False)]}"/>
+              <field name="company_rate" digits="[12,12]"
+                string="VND/USD" attrs="{'readonly': [('id', '!=', False)]}" />
             </group>
           </sheet>
         </sheet>
@@ -21,9 +22,9 @@
       <field name="arch" type="xml">
         <tree position="replace">
           <tree>
-            <field name="write_date"/>
-            <field name="create_uid"/>
-            <field name="company_rate" digits="[12,12]" />
+            <field name="write_date" />
+            <field name="create_uid" />
+            <field name="company_rate" digits="[12,12]" string="VND/USD" />
           </tree>
         </tree>
       </field>
