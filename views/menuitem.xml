@@ -14,11 +14,40 @@
 			<field name="parent_id" ref="sale.sale_menu_root" />
 			<field name="sequence">3</field>
 		</record>
-		<record id="account.menu_action_currency_form" model="ir.ui.menu">
-			<field name="parent_id" ref="sale.sale_menu_root" />
-			<field name="sequence">4</field>
+		<!-- action -->
+		<record
+			id="action_currencies_vnd" model="ir.actions.act_window">
+			<field name="name">Currency Rate</field>
+			<field name="res_model">res.currency.rate</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_ids"
+				eval="[(6, 0, [ref('base.view_currency_rate_tree'),
+			ref('base.view_currency_rate_form')])]" />
 		</record>
-
+		<!-- <record id="view_form_vnd" model="ir.ui.view">
+			<field name="name">Form Vnd</field>
+			<field name="model">res.currency.rate</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<field name="currency_id" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record> -->
+		<!-- menu -->
+		<menuitem id="menu_newsale_config"
+			name="Cấu hình"
+			parent="sale.sale_menu_root"
+			sequence="4"
+		/>
+		<menuitem id="menu_newsale_currency_rate"
+			name="Tiền tệ"
+			parent="menu_newsale_config"
+			action="action_currencies_vnd"
+		/>
 		<!-- Ẩn menu không cần -->
 		<record id="sale.sale_order_menu" model="ir.ui.menu">
 			<field name="active">False</field>
@@ -55,10 +84,12 @@
 			<field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]" />
 		</record>
 		<record id="sale.sale_menu_root" model="ir.ui.menu">
-			<field name="groups_id" eval="[(6, 0, 
-			[ref('sales_team.group_sale_manager')]
-			)]" /><!-- ref('sales_team.group_sale_salesman_all_leads'),
-				ref('sales_team.group_sale_salesman')] -->
+			<field name="groups_id"
+				eval="[(6, 0, 
+			[ref('sales_team.group_sale_manager'),
+			ref('sales_team.group_sale_salesman_all_leads'),
+			ref('sales_team.group_sale_salesman')]
+			)]" />
 		</record>
 	</data>
 </odoo>

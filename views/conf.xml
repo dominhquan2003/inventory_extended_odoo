@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <record id="view_currency_rate_form_edited" model="ir.ui.view">
+      <field name="name">View Currency Rate Form Edited</field>
+      <field name="model">res.currency.rate</field>
+      <field name="inherit_id" ref="base.view_currency_rate_form" />
+      <field name="arch" type="xml">
+        <sheet position="replace">
+          <sheet>
+            <group>
+              <field name="company_rate" digits="[12,12]" attrs="{'readonly': [('id', '!=', False)]}"/>
+            </group>
+          </sheet>
+        </sheet>
+      </field>
+    </record>
+    <record id="view_currency_rate_tree_edited" model="ir.ui.view">
+      <field name="name">View Currency Rate Tree Edited</field>
+      <field name="model">res.currency.rate</field>
+      <field name="inherit_id" ref="base.view_currency_rate_tree" />
+      <field name="arch" type="xml">
+        <tree position="replace">
+          <tree>
+            <field name="write_date"/>
+            <field name="create_uid"/>
+            <field name="company_rate" digits="[12,12]" />
+          </tree>
+        </tree>
+      </field>
+    </record>
+  </data>
+</odoo>
