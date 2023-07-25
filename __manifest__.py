@@ -30,6 +30,7 @@
         'views/customer.xml',
         'views/product.xml',
         'views/quotation.xml',
+        'views/conf.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
