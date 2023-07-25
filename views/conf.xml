@@ -21,8 +21,8 @@
       <field name="arch" type="xml">
         <tree position="replace">
           <tree>
-            <field name="create_uid"/>
             <field name="write_date"/>
+            <field name="create_uid"/>
             <field name="company_rate" digits="[12,12]" />
           </tree>
         </tree>
