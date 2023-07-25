@@ -20,23 +20,10 @@
 			<field name="name">Currency Rate</field>
 			<field name="res_model">res.currency.rate</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_ids"
+			<!-- <field name="view_ids"
 				eval="[(6, 0, [ref('base.view_currency_rate_tree'),
-			ref('base.view_currency_rate_form')])]" />
+			ref('base.view_currency_rate_form')])]" /> -->
 		</record>
-		<!-- <record id="view_form_vnd" model="ir.ui.view">
-			<field name="name">Form Vnd</field>
-			<field name="model">res.currency.rate</field>
-			<field name="arch" type="xml">
-				<form>
-					<sheet>
-						<group>
-							<field name="currency_id" />
-						</group>
-					</sheet>
-				</form>
-			</field>
-		</record> -->
 		<!-- menu -->
 		<menuitem id="menu_newsale_config"
 			name="Cấu hình"

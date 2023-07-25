@@ -16,3 +16,6 @@ class ResCurrencyRate(models.Model):
         ('unique_name_per_day', 'Check(1=1)', 'Only one currency rate per day allowed!'),
         ('currency_rate_check', 'CHECK (rate>0)', 'The currency rate must be strictly positive.'),
     ]
+
+    def _onchange_rate_warning(self):
+        return True
