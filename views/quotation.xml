@@ -100,6 +100,11 @@
 				<xpath expr="//tree/field[@name='product_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
+				<xpath expr="//tree/field[@name='price_unit']" position="attributes">
+					<attribute name="attrs">
+						{'readonly': [('qty_invoiced', '&gt;', 0)], 'invisible': [('sale_group', '!=', True)]}
+					</attribute>
+				</xpath>
 				<xpath expr="//field[@name='date_order']" position="attributes">
 					<attribute name="widget">date</attribute>
 				</xpath>
@@ -147,6 +152,7 @@
 						attrs="{'invisible': [('state', '=', 'draft')]}" />
 					<field name="virtual_available" string="Cần SX"
 						attrs="{'invisible': [('state', '=', 'draft')]}" />
+					<field name="sale_group" invisible="1"/>
 				</xpath>
 				<xpath expr="(//button[@name='action_confirm'])[2]" position="attributes">
 					<attribute
