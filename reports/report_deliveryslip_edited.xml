@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="external_layout_standard_edit" inherit_id="web.external_layout_standard">
+    <xpath expr="//div[@class='col-3 mb4']/img" position="attributes">
+      <attribute name="style">max-height: 120px;</attribute>
+    </xpath>
+    <xpath expr="//div[@class='col-9 text-end'][1]" position="replace">
+      <t t-call-assets="icon.awesome" />
+      <div class="col-9" style="margin-top:20px; margin-bottom:40px">
+        <div t-esc="company.name" style="font-size: 40px; font-weight: bold; text-align: center " /><br />
+        <!-- <div style="text-align: left; margin-left: 30px">
+          <i class="fa-solid fa-location-dot"></i>
+          <t t-esc="company.partner_id.street" />, 
+          <t t-esc="company.partner_id.street2" />, 
+          <t t-esc="company.partner_id.city" />,
+          <t t-esc="company.state_id.name" />, 
+          <t t-if="company.zip">
+            <t t-esc="company.zip" />,
+          </t>
+          <t t-esc="company.country_id.name" /><br />
+        </div> -->
+        <div style="text-align: left; margin-left: 30px" >
+          <t t-esc="company.partner_id" 
+            t-options='{"widget": "contact", "fields": ["address"]}'/>
+        </div>
+        <div class="row" style="margin: 10px 0 0 35px">
+          <div class="col-3">
+            <t t-if="company.vat">
+              <b>MST:</b><t t-esc="company.vat" />
+            </t>
+          </div>
+          <div class="col-3">
+            <i class="fa-solid fa-phone"></i>
+            <t t-esc="company.partner_id.phone" />
+          </div>
+          <div class="col-3" style="display: inline">
+            <i class="far fa-envelope"></i>
+            <t t-esc="company.partner_id.email" />
+          </div>
+        </div>
+      </div>
+    </xpath>
+    <xpath expr="//div[@class='row'][2]" position="replace" >
+    </xpath>
+    <xpath expr="//div[@class='col-12'][1]/div[1]" position="replace">
+      <div style="border-bottom: 1px solid black; margin: 0 auto; width: 400px;"></div>
+      <div>text test</div>
+    </xpath>
+  </template>
+  <!-- <template id="report_delivery_document_edited" inherit_id="stock.report_delivery_document">
+    <xpath expr="//div[@name='outgoing_delivery_address']/span/strong" position="replace">
+      <strong style="font-size: 30px;">Test Thôi:</strong>
+    </xpath>
+  </template> -->
+</odoo>
