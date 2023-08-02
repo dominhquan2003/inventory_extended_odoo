@@ -7,26 +7,17 @@
     <xpath expr="//div[@class='col-9 text-end'][1]" position="replace">
       <t t-call-assets="icon.awesome" />
       <div class="col-9" style="margin-top:20px; margin-bottom:40px">
-        <div t-esc="company.name" style="font-size: 40px; font-weight: bold; text-align: center " /><br />
-        <!-- <div style="text-align: left; margin-left: 30px">
-          <i class="fa-solid fa-location-dot"></i>
-          <t t-esc="company.partner_id.street" />, 
-          <t t-esc="company.partner_id.street2" />, 
-          <t t-esc="company.partner_id.city" />,
-          <t t-esc="company.state_id.name" />, 
-          <t t-if="company.zip">
-            <t t-esc="company.zip" />,
-          </t>
-          <t t-esc="company.country_id.name" /><br />
-        </div> -->
-        <div style="text-align: left; margin-left: 30px" >
-          <t t-esc="company.partner_id" 
-            t-options='{"widget": "contact", "fields": ["address"]}'/>
+        <div t-esc="company.name" style="font-size: 40px; font-weight: bold; text-align: center " />
+        <br />
+        <div style="text-align: left; margin-left: 30px">
+          <t t-esc="company.partner_id"
+            t-options='{"widget": "contact", "fields": ["address"]}' />
         </div>
         <div class="row" style="margin: 10px 0 0 35px">
           <div class="col-3">
             <t t-if="company.vat">
-              <b>MST:</b><t t-esc="company.vat" />
+              <b>MST:</b>
+              <t t-esc="company.vat" />
             </t>
           </div>
           <div class="col-3">
@@ -40,16 +31,96 @@
         </div>
       </div>
     </xpath>
-    <xpath expr="//div[@class='row'][2]" position="replace" >
+    <xpath expr="//div[@class='row'][2]" position="replace">
     </xpath>
     <xpath expr="//div[@class='col-12'][1]/div[1]" position="replace">
       <div style="border-bottom: 1px solid black; margin: 0 auto; width: 400px;"></div>
-      <div>text test</div>
     </xpath>
   </template>
-  <!-- <template id="report_delivery_document_edited" inherit_id="stock.report_delivery_document">
-    <xpath expr="//div[@name='outgoing_delivery_address']/span/strong" position="replace">
-      <strong style="font-size: 30px;">Test Thôi:</strong>
+  <template id="report_delivery_document_edited" inherit_id="stock.report_delivery_document">
+    <xpath expr="//t[3]/div[1]/div[1]/span[1]/strong[1]" position="replace">
+      <strong>Thông tin khách hàng:</strong>
     </xpath>
-  </template> -->
+    <xpath expr="//t[@t-set='address']" position="before">
+      <h2 style="text-align: center; margin: 30px 0 30px 0"> PHIẾU XUẤT KHO 0000<span t-field="o.id" />
+      </h2>
+    </xpath>
+    <xpath expr="//div/h2" position="replace" />
+    <xpath expr="//div[@class='row mt32 mb32'][1]" position="replace" />
+    <xpath expr="//div[@class='col-7'][1]/t[1]" position="before">
+      <div t-if="o.origin">
+        <strong>Đơn hàng:</strong>
+        <p t-field="o.origin" />
+      </div>
+      <div t-if="o.state">
+        <strong>Ngày giao hàng:</strong>
+        <t t-if="o.state == 'done'">
+          <p t-field="o.date_done" />
+        </t>
+        <t t-if="o.state != 'done'">
+          <p t-field="o.scheduled_date" />
+        </t>
+      </div>
+    </xpath>
+    <xpath expr="//table[@class='table table-sm mt48'][1]/thead[1]/tr[1]"
+      position="replace">
+      <tr>
+        <th name="th_sm_move_lines_count">
+          <strong>STT</strong>
+        </th>
+        <th name="th_sm_product">
+          <strong>Mã hàng</strong>
+        </th>
+        <th name="th_sm_ordered">
+          <strong>Đặt hàng</strong>
+        </th>
+        <th name="th_sm_quantity">
+          <strong>Đã giao</strong>
+        </th>
+      </tr>
+    </xpath>
+    <xpath expr="//table[@class='table table-sm mt48'][1]" position="after">
+      <div name="signature" class="row">
+        <div class="col-6" style="text-align: center;">
+          <strong>Người lập phiếu</strong><br />
+          <span>(Ký, họ tên)</span>
+        </div>
+        <div class="col-6" style="text-align: center;">
+          <span>Ngày....Tháng....Năm.....</span><br />
+          <strong>Người nhận hàng</strong><br />
+          <span>(Ký, họ tên)</span>
+        </div>
+      </div>
+    </xpath>
+  </template>
+  <template id="stock_report_delivery_aggregated_move_lines_edited"
+    inherit_id="stock.stock_report_delivery_aggregated_move_lines">
+    <xpath expr="//tr[1]" position="replace">
+      <t t-set="counter" t-value="1" />
+      <tr t-foreach="aggregated_lines" t-as="line">
+        <td>
+          <span t-esc="counter" />
+          <t t-set="counter" t-value="counter + 1" />
+        </td>
+        <td>
+          <span t-esc="aggregated_lines[line]['name']" />
+          <p t-if="aggregated_lines[line]['description']">
+            <span t-esc="aggregated_lines[line]['description']" />
+          </p>
+        </td>
+        <td class="text-center" name="move_line_aggregated_qty_ordered">
+          <span t-esc="aggregated_lines[line]['qty_ordered']"
+            t-options="{'widget': 'float', 'decimal_precision': 'Product Unit of Measure'}" />
+          <span t-esc="aggregated_lines[line]['product_uom'].name" />
+        </td>
+        <td class="text-center" name="move_line_aggregated_qty_done">
+          <t t-if="aggregated_lines[line]['qty_done']">
+            <span t-esc="aggregated_lines[line]['qty_done']"
+              t-options="{'widget': 'float', 'decimal_precision': 'Product Unit of Measure'}" />
+            <span t-esc="aggregated_lines[line]['product_uom'].name" />
+          </t>
+        </td>
+      </tr>
+    </xpath>
+  </template>
 </odoo>

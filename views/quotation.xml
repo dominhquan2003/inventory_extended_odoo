@@ -172,6 +172,9 @@
 				</xpath>
 				<create name="add_section_control" position="replace" />
 				<create name="add_note_control" position="replace" />
+				<create name="add_product_control" position="attributes">
+					<attribute name="string">Thêm mã hàng</attribute>
+				</create>
 				<xpath expr="//field[@name='tax_totals']" position="after">
 					<field name="currency_id_1" invisible="1" />
 					<field name="vnd_total" widget="monetary" string="Vnd"
