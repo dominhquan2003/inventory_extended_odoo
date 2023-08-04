@@ -6,10 +6,6 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
   
 
-    partner_id_test = fields.Many2one(
-        "res.partner",
-        related='order_id.partner_id',
-    )
     virtual_available = fields.Float(
         related="product_template_id.virtual_available"
     )
@@ -23,4 +19,3 @@ class SaleOrderLine(models.Model):
             name = so_line.product_id.name
             result.append((so_line.id, name))
         return result
-    
