@@ -5,6 +5,12 @@
 			<field name="model">sale.order</field>
 			<field name="inherit_id" ref="sale.view_order_form" />
 			<field name="arch" type="xml">
+				<xpath expr="//div[@class='oe_title']" position="before">
+					<group>
+						<field name="ma_dh" />
+					</group>
+					<label for="name" string="Tên ĐH" />
+				</xpath>
 				<xpath expr="//form/sheet/div/h1/field[@name='name']" position="attributes">
 					<attribute name="readonly">0</attribute>
 				</xpath>
@@ -53,13 +59,19 @@
 						company_id)), ('is_company', '=', True)]
 					</attribute>
 					<attribute name="options">{'no_create': True}</attribute>
+					<attribute name="widget" />
+				</field>
+				<field name="partner_id" position="after">
+					<field name="vnd_rate" />
 				</field>
 				<!-- filter products base on customer -->
 				<field name="product_template_id" position="after">
-					<field name="partner_id_test" invisible="1" />
+					<field name="order_partner_id" invisible="1" />
 				</field>
 				<field name="product_template_id" position="attributes">
-					<attribute name="domain">[('customer_id', '=', partner_id_test)]</attribute>
+					<attribute name="domain">[('customer_id', '=', order_partner_id)]</attribute>
+					<attribute name="options">{'no_create': True}</attribute>
+					<attribute name="string">Mã hàng</attribute>
 				</field>
 				<button id="create_invoice_percentage" position="attributes">
 					<attribute name="invisible">1</attribute>
@@ -88,9 +100,20 @@
 				<xpath expr="//tree/field[@name='product_id']" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</xpath>
+				<!-- ẩn các field liên quan đến tiền -->
+				<xpath expr="//tree/field[@name='price_unit']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//tree/field[@name='price_unit']" position="after">
+					<field name="price_unit" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"
+						groups="sales_team.group_sale_manager" />
+				</xpath>
+				<xpath expr="//tree/field[@name='price_subtotal']" position="attributes">
+					<attribute name="groups">sales_team.group_sale_manager</attribute>
+				</xpath>
+				<!--  -->
 				<xpath expr="//field[@name='date_order']" position="attributes">
 					<attribute name="widget">date</attribute>
-					<!-- <attribute name="attrs">{'invisible': [('state', '=', 'cancel')]}</attribute> -->
 				</xpath>
 				<xpath expr="(//label[@for='date_order']/parent::div)[1]" position="attributes">
 					<attribute name="invisible">1</attribute>
@@ -99,11 +122,17 @@
 					<attribute name="invisible">1</attribute>
 				</xpath>
 				<xpath expr="(//label[@for='date_order']/parent::div)[2]" position="attributes">
-					<attribute name="attrs">{'invisible': [('state', '=', 'cancel')]}</attribute>
+					<attribute name="attrs">
+						{'invisible': [('state', 'in', ['draft', 'cancel', 'sent'])], 'readonly': False}
+					</attribute>
+					<attribute name="readonly">False</attribute>
 				</xpath>
 				<xpath expr="//field[@name='date_order'][last()]" position="attributes">
 					<attribute name="widget">date</attribute>
-					<attribute name="attrs">{'invisible': [('state', '=', 'cancel')]}</attribute>
+					<attribute name="attrs">
+						{'invisible': [('state', 'in', ['draft', 'cancel', 'sent'])], 'readonly': False}
+					</attribute>
+					<attribute name="readonly">False</attribute>
 				</xpath>
 				<xpath expr="//field[@name='date_order']" position="after">
 					<field name="commitment_date" />
@@ -112,7 +141,7 @@
 					<attribute name="widget">date</attribute>
 				</xpath>
 				<xpath expr="//field[@name='validity_date']" position="before">
-					<field name="create_date" widget="date" />
+					<field name="create_order_date" readonly='False' />
 				</xpath>
 
 				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom_qty']"
@@ -126,7 +155,7 @@
 
 				<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='qty_delivered']"
 					position="after">
-					<field name="qty_available" string="Đã SX"
+					<field name="qty_available" string="Tồn kho"
 						attrs="{'invisible': [('state', '=', 'draft')]}" />
 					<field name="virtual_available" string="Cần SX"
 						attrs="{'invisible': [('state', '=', 'draft')]}" />
@@ -143,6 +172,18 @@
 				</xpath>
 				<create name="add_section_control" position="replace" />
 				<create name="add_note_control" position="replace" />
+				<create name="add_product_control" position="attributes">
+					<attribute name="string">Thêm mã hàng</attribute>
+				</create>
+				<xpath expr="//field[@name='tax_totals']" position="after">
+					<field name="currency_id_1" invisible="1" />
+					<field name="vnd_total" widget="monetary" string="Vnd"
+						groups="sales_team.group_sale_manager"
+						options="{'currency_field': 'currency_id_1'}" />
+				</xpath>
+				<xpath expr="//field[@name='tax_totals']" position="attributes">
+					<attribute name="groups">sales_team.group_sale_manager</attribute>
+				</xpath>
 			</field>
 		</record>
 
@@ -163,8 +204,15 @@
 			<field name="model">sale.order</field>
 			<field name="inherit_id" ref="sale.view_quotation_tree" />
 			<field name="arch" type="xml">
-				<field name="create_date" position="after">
+				<field name="name" position="before">
+					<field name="ma_dh" />
+				</field>
+				<field name="name" position="after">
+					<field name="create_order_date" optional="show" />
 					<field name="date_order" widget="date" optional="show" />
+				</field>
+				<field name="create_date" position="attributes">
+					<attribute name="invisible">1</attribute>
 				</field>
 				<field name="company_id" position="attributes">
 					<attribute name="invisible">1</attribute>
@@ -188,6 +236,21 @@
 					<attribute name="invisible">1</attribute>
 				</field>
 				<field name="invoice_status" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field>
+				<field name="commitment_date" position="after">
+					<field name="amount_total" position="move" />
+					<field name="vnd_rate" groups="sales_team.group_sale_manager" />
+					<field name="currency_id_1" invisible="1" />
+					<field name="vnd_total" widget="monetary"
+						options="{'currency_field': 'currency_id_1'}"
+						sum="Tổng vnđ" groups="sales_team.group_sale_manager" />
+					<field name="state" position="move" />
+				</field>
+				<field name="amount_total" position="attributes">
+					<attribute name="groups">sales_team.group_sale_manager</attribute>
+				</field>
+				<field name="activity_ids" position="attributes">
 					<attribute name="invisible">1</attribute>
 				</field>
 			</field>
@@ -237,10 +300,10 @@
 				<xpath expr="//filter[@name='filter_create_date']" position="after">
 					<filter string="Ngày giao hàng" name="commitment_date" date="commitment_date" />
 				</xpath>
-				<xpath expr="//filter[@name='my_quotation']" position="attributes">
+				<!-- <xpath expr="//filter[@name='my_quotation']" position="attributes">
 					<attribute name="string">Đơn hàng của tôi</attribute>
-				</xpath>
-
+				</xpath> -->
+				<xpath expr="//filter[@name='my_quotation']" position="replace" />
 			</field>
 		</record>
 

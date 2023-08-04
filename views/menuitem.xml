@@ -4,14 +4,37 @@
 		<!-- Thay đổi parent của các menu con -->
 		<record id="sale.menu_sale_quotations" model="ir.ui.menu">
 			<field name="parent_id" ref="sale.sale_menu_root" />
+			<field name="sequence">1</field>
 		</record>
 		<record id="sale.res_partner_menu" model="ir.ui.menu">
 			<field name="parent_id" ref="sale.sale_menu_root" />
+			<field name="sequence">2</field>
 		</record>
 		<record id="sale.menu_product_template_action" model="ir.ui.menu">
 			<field name="parent_id" ref="sale.sale_menu_root" />
+			<field name="sequence">3</field>
 		</record>
-
+		<!-- action -->
+		<record
+			id="action_currencies_vnd" model="ir.actions.act_window">
+			<field name="name">Tỷ giá VND/USD</field>
+			<field name="res_model">res.currency.rate</field>
+			<field name="view_mode">tree,form</field>
+			<!-- <field name="view_ids"
+				eval="[(6, 0, [ref('base.view_currency_rate_tree'),
+			ref('base.view_currency_rate_form')])]" /> -->
+		</record>
+		<!-- menu -->
+		<menuitem id="menu_newsale_config"
+			name="Cấu hình"
+			parent="sale.sale_menu_root"
+			sequence="4"
+		/>
+		<menuitem id="menu_newsale_currency_rate"
+			name="Tiền tệ"
+			parent="menu_newsale_config"
+			action="action_currencies_vnd"
+		/>
 		<!-- Ẩn menu không cần -->
 		<record id="sale.sale_order_menu" model="ir.ui.menu">
 			<field name="active">False</field>
@@ -41,22 +64,19 @@
 		<record id="account.menu_finance" model="ir.ui.menu">
 			<field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]" />
 		</record>
-		<record id="hr.menu_hr_root" model="ir.ui.menu">
-			<field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]" />
-		</record>
 		<record id="stock.menu_stock_root" model="ir.ui.menu">
 			<field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]" />
 		</record>
 		<record id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root" model="ir.ui.menu">
 			<field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]" />
 		</record>
-		<!-- NV bán hàng -->
 		<record id="sale.sale_menu_root" model="ir.ui.menu">
-			<field name="groups_id" eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" />
-		</record>
-		<!-- NV kho -->
-		<record id="timekeeping_app.menu_timekeeping_table" model="ir.ui.menu">
-			<field name="groups_id" eval="[(6, 0, [ref('timekeeping_app.timekeeping_group_manager')])]" />
+			<field name="groups_id"
+				eval="[(6, 0, 
+			[ref('sales_team.group_sale_manager'),
+			ref('sales_team.group_sale_salesman_all_leads'),
+			ref('sales_team.group_sale_salesman')]
+			)]" />
 		</record>
 	</data>
 </odoo>

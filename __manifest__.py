@@ -18,10 +18,10 @@
     # for the full list
     'category': 'Sales',
     'version': '0.1',
-    'application': True,
+    'application': False,
 
     # any module necessary for this one to work correctly
-    'depends': ['sale_management','stock','base','timekeeping_app'],
+    'depends': ['sale_management', 'stock'],  # , 'base','timekeeping_app'
 
     # always loaded
     'data': [
@@ -30,9 +30,14 @@
         'views/customer.xml',
         'views/product.xml',
         'views/quotation.xml',
+        'views/conf.xml',
+        'reports/report_deliveryslip_edited.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+    "icon.awesome": [
+        "newsale\static\src\fontawesome"
+    ]
 }

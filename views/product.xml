@@ -25,7 +25,12 @@
         <group>
           <field name="customer_id" class="oe_inline" string="Khách hàng" style="width: 50%!important;" options="{'no_create': True}" />
           <field name="name" optional="show" class="oe_inline" string="Mã hàng" />
+<<<<<<< HEAD
           <field name="list_price" class="oe_inline" widget='monetary' options="{'currency_field': 'currency_id', 'field_digits': True}" />
+=======
+          <field name="list_price" class="oe_inline" widget='monetary'
+            options="{'currency_field': 'currency_id'}" />
+>>>>>>> main
         </group>
       </xpath>
       <xpath expr='//form/sheet/field[@name="image_1920"]' position="before">
@@ -80,22 +85,36 @@
       <field name="qty_available" position="before">
         <field name="outgoing_qty" />
       </field>
-
-
       <field name="virtual_available" position="after">
+<<<<<<< HEAD
         <field name="total" optional="show" widget="monetary" width="80" options="{'currency_field': 'currency_id'}" string="Tổng trị giá" />
+=======
+        <field name="total" optional="show" widget="monetary" width="80"
+          options="{'currency_field': 'currency_id'}" string="Trị giá" 
+          groups="sales_team.group_sale_manager" />
+>>>>>>> main
         <!-- Để thấy được đơn vị tiền tệ phải có field này và ẩn nó đi -->
         <field name="currency_id" invisible="1" />
       </field>
-
       <xpath expr="//field[@name='name']" position="attributes">
         <attribute name="string">Mã hàng</attribute>
       </xpath>
-
       <xpath expr="//field[@name='outgoing_qty']" position="attributes">
         <attribute name="string">Đặt hàng</attribute>
       </xpath>
-
+      <xpath expr="//field[@name='name']" position="after">
+        <field name="list_price" position="move" />
+        <field name="outgoing_qty" position="move" />
+        <field name="qty_available" position="move" />
+        <field name="virtual_available" position="move" />
+        <field name="total" position="move" />
+      </xpath>
+      <xpath expr="//field[@name='company_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <field name="list_price" position="attributes">
+        <attribute name="groups">sales_team.group_sale_manager</attribute>
+      </field>
     </field>
   </record>
   <record id="view_list_product_edited_2" model="ir.ui.view">
@@ -105,16 +124,15 @@
     <field name="arch" type="xml">
 
       <xpath expr="//field[@name='responsible_id']" position="attributes">
-        <attribute name="string">NV sales</attribute>
-        <attribute name="optional">True</attribute>
-        <!-- <attribute name="store">True</attribute> -->
+        <attribute name="string">NV KD</attribute>
+        <attribute name="optional">show</attribute>
       </xpath>
 
       <xpath expr="//field[@name='qty_available']" position="attributes">
-        <attribute name="string">Đã sản xuất</attribute>
+        <attribute name="string">Đã SX</attribute>
       </xpath>
       <xpath expr="//field[@name='virtual_available']" position="attributes">
-        <attribute name="string">Cần sản xuất</attribute>
+        <attribute name="string">Cần SX</attribute>
       </xpath>
 
 

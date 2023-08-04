@@ -5,21 +5,36 @@ from odoo.exceptions import ValidationError, UserError  # type:ignore
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    ma_dh = fields.Char(
+        string='Mã ĐH',
+        compute='_compute_ma_dh'
+    )
     name = fields.Char(
-        default=lambda self: _('Đơn hàng mới'))
-    create_date = fields.Datetime(
-        default=lambda self: fields.Datetime.now())
-    # order_line_ids = fields.One2many(
-    #     'sale.order.line', 'order_id', string='Sale Order Lines')
-
-    # def action_done(self):
-    #     # Kiểm tra trạng thái giao hàng đã hoàn thành
-    #     # if self.state != 'done':
-    #     #     raise ValidationError('Giao hết hàng đã sản xuất')
-    #     for line in self.order_line :
-    #         line.qty_delivered = line.qty_available
-    #         line.product_uom_qty = line.qty_available
-    #         # line.qty_available = 0
+        string="Tên ĐH",
+        required=True,
+        default=""
+    )
+    create_order_date = fields.Date(
+        string="Đặt hàng",
+        default=lambda self: fields.Date.today()
+    )
+    vnd_rate = fields.Float(
+        string="Tỷ giá",
+        readonly="True",
+        default=lambda self: (
+            self.env["res.currency"].search([("name", "=", "VND")]).rate_ids[0].company_rate
+        ) if self.env["res.currency"].search([("name", "=", "VND")]).rate_ids else 0.0
+    )
+    vnd_total = fields.Integer(
+        string="Trị giá(VND)",
+        compute='_compute_vnd_total'
+    )
+    currency_id_1 = fields.Many2one(
+        'res.currency',
+        default=lambda self: (
+            self.env.ref('base.VND').id
+        )
+    )
 
     def action_confirm(self):
         """ Confirm the given quotation(s) and set their confirmation date.
@@ -56,17 +71,18 @@ class SaleOrder(models.Model):
         #     self.action_done()
 
         return True
-    
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            if 'company_id' in vals:
-                self = self.with_company(vals['company_id'])
-            if vals.get('name', _("Đơn hàng mới")) == _("Đơn hàng mới"):
-                seq_date = fields.Datetime.context_timestamp(
-                    self, fields.Datetime.to_datetime(vals['date_order'])
-                ) if 'date_order' in vals else None
-                vals['name'] = self.env['ir.sequence'].next_by_code(
-                    'sale.order', sequence_date=seq_date) or _("Đơn hàng mới")
 
-        return super().create(vals_list)
+    @api.depends('vnd_rate')
+    def _compute_vnd_total(self):
+        for rc in self:
+            rc.vnd_total = rc.vnd_rate * rc.amount_total
+
+    def _compute_ma_dh(self):
+        for rc in self:
+            if rc.id:
+                rc.ma_dh = "{:05d}".format(rc.id)
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        # Clear the values of dependent fields
+        self.order_line = False

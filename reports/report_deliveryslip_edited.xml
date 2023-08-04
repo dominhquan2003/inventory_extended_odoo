@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <!-- <template id="report_assets_common_custom_fonts" name="Custom QWeb fonts"
+    inherit_id="web.report_assets_common">
+    <xpath expr="." position="inside">
+      <link href="/new_sale/static/src/less/fonts.less" rel="stylesheet" type="text/less" />
+    </xpath>
+  </template> -->
+  <template id="external_layout_standard_edit" inherit_id="web.external_layout_standard">
+    <xpath expr="//div[@class='col-3 mb4']/img" position="attributes">
+      <attribute name="style">max-height: 120px;</attribute>
+    </xpath>
+    <xpath expr="//div[@class='col-9 text-end'][1]" position="replace">
+      <t t-call-assets="icon.awesome" />
+      <div class="col-9" style="margin-top:20px; margin-bottom:40px">
+        <div t-esc="company.name" style="font-size: 40px; font-weight: bold; text-align: center " />
+        <br />
+        <div style="text-align: left; margin-left: 30px">
+          <t t-esc="company.partner_id"
+            t-options='{"widget": "contact", "fields": ["address"]}' />
+        </div>
+        <div class="row" style="margin: 10px 0 0 35px">
+          <div class="col-3">
+            <t t-if="company.vat">
+              <b>MST:</b>
+              <t t-esc="company.vat" />
+            </t>
+          </div>
+          <div class="col-3">
+            <i class="fa-solid fa-phone"></i>
+            <t t-esc="company.partner_id.phone" />
+          </div>
+          <div class="col-3" style="display: inline">
+            <i class="far fa-envelope"></i>
+            <t t-esc="company.partner_id.email" />
+          </div>
+        </div>
+      </div>
+    </xpath>
+    <xpath expr="//div[@class='row'][2]" position="replace">
+    </xpath>
+    <xpath expr="//div[@class='col-12'][1]/div[1]" position="replace">
+      <div style="border-bottom: 1px solid black; margin: 0 auto; width: 400px;"></div>
+    </xpath>
+  </template>
+  <template id="report_delivery_document_edited" inherit_id="stock.report_delivery_document">
+    <!-- <xpath expr="//t[1]/t[1]/t[1]" position="before">
+      <style>
+        body {
+        font-family: 'Courier New', Courier, monospace;
+        }
+      </style>
+    </xpath> -->
+    <xpath expr="//t[3]/div[1]/div[1]/span[1]/strong[1]" position="replace">
+      <strong>Thông tin khách hàng:</strong>
+    </xpath>
+    <xpath expr="//t[@t-set='address']" position="before">
+      <h2 style="text-align: center; margin: 30px 0 30px 0"> PHIẾU XUẤT KHO 0000<span t-field="o.id" />
+      </h2>
+    </xpath>
+    <xpath expr="//div/h2" position="replace" />
+    <xpath expr="//div[@class='row mt32 mb32'][1]" position="replace" />
+    <xpath expr="//div[@class='col-7'][1]/t[1]" position="before">
+      <div t-if="o.origin">
+        <strong>Đơn hàng:</strong>
+        <p t-field="o.origin" />
+      </div>
+      <div t-if="o.state">
+        <strong>Ngày giao hàng:</strong>
+        <t t-if="o.state == 'done'">
+          <p t-field="o.date_done" />
+        </t>
+        <t t-if="o.state != 'done'">
+          <p t-field="o.scheduled_date" />
+        </t>
+      </div>
+    </xpath>
+    <xpath expr="//table[@class='table table-sm mt48'][1]/thead[1]/tr[1]"
+      position="replace">
+      <tr>
+        <th name="th_sm_move_lines_count" style="width: 5%">
+          <strong>STT</strong>
+        </th>
+        <th name="th_sm_product" style="width: 20%">
+          <strong>Mã hàng</strong>
+        </th>
+        <th name="th_sm_quantity" style="width: 10%">
+          <strong>Đã giao</strong>
+        </th>
+        <th>
+          <strong>Ghi chú</strong>
+        </th>
+      </tr>
+    </xpath>
+    <xpath expr="//table[@class='table table-sm mt48'][1]" position="after">
+      <div name="signature" class="row">
+        <div class="col-6" style="text-align: center;">
+          <strong>Người lập phiếu</strong>
+          <br />
+          <span>(Ký, họ tên)</span>
+        </div>
+        <div class="col-6" style="text-align: center;">
+          <span>Ngày. . . .Tháng. . . . Năm. . . . . .</span>
+          <br />
+          <strong>Người nhận hàng</strong>
+          <br />
+          <span>(Ký, họ tên)</span>
+        </div>
+      </div>
+    </xpath>
+  </template>
+  <template id="stock_report_delivery_aggregated_move_lines_edited"
+    inherit_id="stock.stock_report_delivery_aggregated_move_lines">
+    <xpath expr="//tr[1]" position="replace">
+      <t t-set="counter" t-value="1" />
+      <tr t-foreach="aggregated_lines" t-as="line">
+        <td style="text-align: center;">
+          <span t-esc="counter" />
+          <t t-set="counter" t-value="counter + 1" />
+        </td>
+        <td style="text-align: center;">
+          <span t-esc="aggregated_lines[line]['name']" />
+          <p t-if="aggregated_lines[line]['description']">
+            <span t-esc="aggregated_lines[line]['description']" />
+          </p>
+        </td>
+        <td class="text-center" name="move_line_aggregated_qty_done">
+          <t t-if="aggregated_lines[line]['qty_done']">
+            <span t-esc="aggregated_lines[line]['qty_done']"
+              t-options="{'widget': 'float', 'decimal_precision': 'Product Unit of Measure'}" />
+          </t>
+        </td>
+        <td>
+        </td>
+      </tr>
+    </xpath>
+  </template>
+</odoo>
