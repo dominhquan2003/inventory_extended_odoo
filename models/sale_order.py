@@ -72,36 +72,17 @@ class SaleOrder(models.Model):
 
         return True
 
-    # @api.model_create_multi
-    # def create(self, vals_list):
-    #     for vals in vals_list:
-    #         if 'company_id' in vals:
-    #             self = self.with_company(vals['company_id'])
-    #         if not vals.get('name') or vals.get('name') == _("Đơn hàng mới"):
-    #             seq_date = fields.Datetime.context_timestamp(
-    #                 self, fields.Datetime.to_datetime(vals['date_order'])
-    #             ) if 'date_order' in vals else None
-    #             vals['name'] = self.env['ir.sequence'].next_by_code(
-    #                 'sale.order', sequence_date=seq_date) or _("Đơn hàng mới")
-    #         else:
-    #             prefix = self.env['ir.sequence'].search([
-    #                 ('code', '=', 'sale.order')
-    #             ]).prefix
-    #             vals['name'] = prefix + " " + vals['name']
-
-    #     return super().create(vals_list)
-
-    # _sql_constraints = [
-    #     ('unique_name', 'UNIQUE (name)', 'Trùng tên đơn hàng.')
-    # ]
-
     @api.depends('vnd_rate')
     def _compute_vnd_total(self):
         for rc in self:
             rc.vnd_total = rc.vnd_rate * rc.amount_total
 
-    # @api.depends('id')
     def _compute_ma_dh(self):
         for rc in self:
             if rc.id:
                 rc.ma_dh = "{:05d}".format(rc.id)
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        # Clear the values of dependent fields
+        self.order_line = False
